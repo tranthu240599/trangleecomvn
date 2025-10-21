@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Tranglee{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <!-- Header -->
+    <header style="background-color: #000; color: #fff; padding: 20px;">
+        <div class="logo">
+            <h1>TRANGLEE</h1>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">TRANGLEE</a>
+              <div class="collapse navbar-collapse">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item"><a class="nav-link" href="/">Trang chủ</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/gioi-thieu/">Giới thiệu</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/san-pham/">Sản phẩm</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/showroom/">Showroom</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/dich-vu/">Dịch vụ</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/tin-tuc/">Tin tức</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/uu-dai/">Ưu đãi Online</a></li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}
+        <!-- Nội dung từng trang sẽ được chèn ở đây -->
+        {% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer style="background-color: #222; color: #fff; padding: 20px; text-align: center;">
+        <p>Theo dõi chúng tôi tại: 
+            <a href="https://facebook.com/tranglee" target="_blank" style="color: #f0c040;">Facebook</a>
+        </p>
+        <p>Hotline: <strong style="color: #f0c040;">0909 999 999</strong></p>
+    </footer>
+
+</body>
+</html>

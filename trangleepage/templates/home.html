@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <title>Trang chủ - Tranglee</title>
-</head>
-<body>
-    <h1>Chào mừng đến với Tranglee!</h1>
-    <p>Đây là trang chủ của website tranglee.com.vn</p>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}Trang chủ - Tranglee{% endblock %}
+
+{% block content %}
+<section style="padding: 40px; text-align: center;">
+    <h2>Chào mừng đến với Tranglee</h2>
+    <p>Khám phá các sản phẩm nội thất cao cấp, showroom hiện đại và dịch vụ tận tâm.</p>
+    <a href="/san-pham/" style="padding: 10px 20px; background-color: #f0c040; color: #000; text-decoration: none;">Xem sản phẩm</a>
+</section>
+{% endblock %}
