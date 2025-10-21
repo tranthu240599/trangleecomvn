@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-+0eo6d!soz5v7#rl!80+$wuwk890f%pnnt3m)4i6vj9(*1y!u5
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['trangleecomvn.onrender.com','127.0.0.1:8080']
+ALLOWED_HOSTS = ['trangleecomvn.onrender.com','127.0.0.1']
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # Application definition
 
@@ -42,13 +42,14 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware'
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware'
 ]
 
 ROOT_URLCONF = 'trangleecomvn.urls'
