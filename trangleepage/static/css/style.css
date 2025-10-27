@@ -1,42 +1,182 @@
-body {
-    font-family: 'Segoe UI', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #fff;
-    color: #333;
-}
-
-header {
-    background-color: #000;
-    color: #fff;
-    padding: 20px;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-    padding: 0;
-}
-
-nav a {
-    color: #f0c040;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-nav a:hover {
-    text-decoration: underline;
-}
-
-footer {
-    background-color: #222;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-}
-
-footer a {
-    color: #f0c040;
-    text-decoration: none;
-}
+    /* Thiết lập cơ bản cho toàn bộ trang */
+    body {
+        margin: 0; /* Xóa khoảng trắng mặc định xung quanh trang */
+        font-family: 'Poppins', sans-serif; /* Sử dụng font chữ Poppins, nếu không có thì dùng sans-serif */
+        background-color: #ffffff; /* Nền trắng */
+        color: #003366; /* Màu chữ xanh đậm */
+    }
+    /* Phần đầu trang */
+    header {
+        padding: 0px 0; /* Khoảng cách trên và dưới là 20px */
+        text-align: left; /* Căn giữa nội dung */
+    }
+    header {
+        background-color: white;
+        color: black;
+        padding: 10px 0;
+    }
+    .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: auto;
+        padding: 0 20px;
+    }
+    .header-left,
+    .header-right {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .header-left img,
+    .header-right img {
+        height: 100px;
+        width: auto;
+        border-radius: 0px;
+    }
+    .header-center {
+        text-align: left;
+        font-family:'Times New Roman', Times, serif
+    }
+    .header-center h4 {
+        margin: 4px 0;
+        font-size: 16px;
+        font-weight: 500;
+    }
+    @media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    .header-left,
+    .header-right {
+        justify-content: center;
+    }
+    }
+    /* Thanh điều hướng (menu) */
+    nav {
+        background-color: #005599; /* Nền xanh sáng hơn */
+        display: flex; /* Hiển thị các mục theo hàng ngang */
+        justify-content: center; /* Căn giữa các mục */
+        gap: 20px; /* Khoảng cách giữa các mục là 20px */
+        padding: 10px 0; /* Khoảng cách trên và dưới là 10px */
+    }
+    /* Các liên kết trong menu */
+    nav a {
+        color: white; /* Màu chữ trắng */
+        text-decoration: none; /* Bỏ gạch chân mặc định */
+        font-weight: bold; /* Chữ đậm */
+    }
+    /* Hiệu ứng khi rê chuột vào liên kết */
+    nav a:hover {
+        text-decoration: underline; /* Hiện gạch chân khi hover */
+    }
+    /* Khung chứa slideshow */
+    .slideshow-container {
+        position: relative; /* Cho phép định vị các phần tử con */
+        width: 100vw; /* Chiếm toàn bộ chiều ngang màn hình */
+        margin: 0; /* Không có lề */
+        padding: 0;
+        overflow: hidden; /* Ẩn phần vượt ra ngoài khung */
+    }
+    /* Mỗi slide ảnh */
+    .slide {
+        display: none; /* Ẩn tất cả slide, chỉ hiển thị 1 cái tại 1 thời điểm */
+        width: 100%; /* Chiếm toàn bộ chiều ngang */
+        animation: fade 1s ease-in-out; /* Hiệu ứng mờ dần khi chuyển ảnh */
+    }
+    /* Ảnh trong slide */
+    .slide img {
+        width: 100%; /* Chiếm toàn bộ chiều ngang */
+        height: auto; /* Chiều cao tự động theo tỷ lệ gốc */
+        object-fit: cover; /* Ảnh lấp đầy khung, có thể bị cắt mép*/
+        display: block; /* Loại bỏ khoảng trắng dưới ảnh */
+    }
+      /* Hiệu ứng mờ dần khi chuyển ảnh */
+      @keyframes fade {
+        from {opacity: 0.4} /* Bắt đầu mờ */
+        to {opacity: 1}     /* Kết thúc rõ nét */
+    }
+    /* Responsive cho thiết bị nhỏ hơn 768px */
+    @media (max-width: 768px) {
+    nav {
+        flex-direction: column; /* Menu xếp dọc thay vì ngang */
+        align-items: center;    /* Căn giữa các mục */
+        }
+    }
+    .footer-container {
+        display: flex;                  /* Kích hoạt Flexbox */
+        justify-content: space-between;/* Căn đều các cột */
+        flex-wrap: wrap;                /* Cho phép xuống dòng nếu màn hình nhỏ */
+        max-width: 1200px;
+        margin: auto;
+        padding: 20px;
+        gap: 20px;
+      }
+    .footer-left,
+    .footer-support,
+    .footer-service,
+    .footer-right {
+      flex: 1;            /* Mỗi cột chiếm đều không gian */
+      min-width: 200px;   /* Đảm bảo không bị quá nhỏ */
+    }
+    footer h4 {
+        margin-bottom: 10px;
+        font-size: 16px;
+        font-weight: 600;
+        text-align: left;
+      }
+      footer ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      } 
+      footer ul li {
+        margin-bottom: 6px;
+        text-align: left;
+      } 
+      footer ul li a {
+        color: white;
+        text-decoration: none;
+      } 
+      footer ul li a:hover {
+        text-decoration: underline;
+      }  
+      /* Phần chân trang */
+      footer {
+        background-color: #003366;    /* Nền xanh đậm */
+        color: white;                 /* Chữ trắng */
+        font-size: 14px;
+        text-align: center; /* Căn giữa nội dung */
+        padding: 10px 0; /* Khoảng cách trên và dưới */
+        margin: 0;            /* Xóa khoảng cách bên ngoài */
+        width: 100vw;         /* Tràn toàn bộ chiều ngang */
+      }   
+      @media (max-width: 768px) {
+        .footer-container {
+          flex-direction: column;
+          text-align: center;
+        }
+    }
+      .footer-left,
+      .footer-support,
+      .footer-service,
+      .footer-right {
+        margin-bottom: 20px;
+      }
+    .footer-bottom {
+        text-align: center;
+        margin-top: 30px;
+      } 
+      /* Liên kết mạng xã hội trong footer */
+      .social-links a {
+        margin: 0 10px;       /* Màu trắng */
+        color: white;       /* Cách trái phải 10px */
+        text-decoration: none;  /* Bỏ gạch chân */
+      }
+      /* Hiệu ứng hover cho liên kết mạng xã hội */
+      .social-links a:hover {
+        text-decoration: underline;   /* Hiện gạch chân khi hover */
+      } 

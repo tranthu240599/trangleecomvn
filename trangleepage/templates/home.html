@@ -1,11 +1,325 @@
-{% extends 'base.html' %}
-
-{% block title %}Trang chủ - Tranglee{% endblock %}
-
-{% block content %}
-<section style="padding: 40px; text-align: center;">
-    <h2>Chào mừng đến với Tranglee</h2>
-    <p>Khám phá các sản phẩm nội thất cao cấp, showroom hiện đại và dịch vụ tận tâm.</p>
-    <a href="/san-pham/" style="padding: 10px 20px; background-color: #f0c040; color: #000; text-decoration: none;">Xem sản phẩm</a>
-</section>
-{% endblock %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<title>Trang Chủ</title>
+  <style>
+    /* Thiết lập cơ bản cho toàn bộ trang */
+body {
+    margin: 0; /* Xóa khoảng trắng mặc định xung quanh trang */
+    font-family: 'Poppins', sans-serif; /* Sử dụng font chữ Poppins, nếu không có thì dùng sans-serif */
+    background-color: #ffffff; /* Nền trắng */
+    color: #003366; /* Màu chữ xanh đậm */
+}
+/* Phần đầu trang */
+header {
+    padding: 0px 0; /* Khoảng cách trên và dưới là 20px */
+    text-align: left; /* Căn giữa nội dung */
+}
+header {
+    background-color: white;
+    color: black;
+    padding: 10px 0;
+}
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+.header-left,
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.header-left img,
+.header-right img {
+    height: 100px;
+    width: auto;
+    border-radius: 0px;
+}
+.header-center {
+    text-align: left;
+    font-family:'Times New Roman', Times, serif
+}
+.header-center h4 {
+    margin: 4px 0;
+    font-size: 16px;
+    font-weight: 500;
+}
+@media (max-width: 768px) {
+.header-container {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+}
+.header-left,
+.header-right {
+    justify-content: center;
+}
+}
+/* Thanh điều hướng (menu) */
+nav {
+    background-color: #005599; /* Nền xanh sáng hơn */
+    display: flex; /* Hiển thị các mục theo hàng ngang */
+    justify-content: center; /* Căn giữa các mục */
+    gap: 20px; /* Khoảng cách giữa các mục là 20px */
+    padding: 5px 0; /* Khoảng cách trên và dưới là 10px */
+}
+/* Các liên kết trong menu */
+nav a {
+    color: white; /* Màu chữ trắng */
+    text-decoration: none; /* Bỏ gạch chân mặc định */
+    font-weight: bold; /* Chữ đậm */
+}
+/* Hiệu ứng khi rê chuột vào liên kết */
+nav a:hover {
+    text-decoration: none; /*underline; /* Hiện gạch chân khi hover */
+    color: #ffcc00;
+}
+/* Ô tìm kiếm */
+.search-form {
+  display: flex;
+  gap: 5px;
+}
+.search-form input {
+  padding: 0px 30px;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+}
+.search-form button {
+  padding: 0px 10px;
+  background-color: #003366;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.search-form button:hover {
+  background-color: #426f9c;
+}
+/* Khung chứa slideshow */
+.slideshow-container {
+    position: relative; /* Cho phép định vị các phần tử con */
+    width: 100vw; /* Chiếm toàn bộ chiều ngang màn hình */
+    margin: 0; /* Không có lề */
+    padding: 0;
+    overflow: hidden; /* Ẩn phần vượt ra ngoài khung */
+}
+/* Mỗi slide ảnh */
+.slide {
+    display: none; /* Ẩn tất cả slide, chỉ hiển thị 1 cái tại 1 thời điểm */
+    width: 100%; /* Chiếm toàn bộ chiều ngang */
+    animation: fade 1s ease-in-out; /* Hiệu ứng mờ dần khi chuyển ảnh */
+}
+/* Ảnh trong slide */
+.slide img {
+    width: 100%; /* Chiếm toàn bộ chiều ngang */
+    height: auto; /* Chiều cao tự động theo tỷ lệ gốc */
+    object-fit: cover; /* Ảnh lấp đầy khung, có thể bị cắt mép*/
+    display: block; /* Loại bỏ khoảng trắng dưới ảnh */
+}
+.footer-container {
+    display: flex;                  /* Kích hoạt Flexbox */
+    justify-content: space-between;/* Căn đều các cột */
+    flex-wrap: wrap;                /* Cho phép xuống dòng nếu màn hình nhỏ */
+    max-width: 1200px;
+    margin: auto;
+    padding: 0px;
+    gap: 20px;
+  }
+.footer-left,
+.footer-support,
+.footer-service,
+.footer-right {
+  flex: 1;            /* Mỗi cột chiếm đều không gian */
+  min-width: 200px;   /* Đảm bảo không bị quá nhỏ */
+}
+footer h4 {
+    margin-bottom: 5px;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: left;
+  }
+  footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  } 
+  footer ul li {
+    margin-bottom: 2px; /* Khoảng cách trên và dưới */
+    text-align: left;
+  } 
+  footer ul li a {
+    color: white;
+    text-decoration: none;
+  } 
+  footer ul li a:hover {
+    transform: scale(1.1); /* Phóng to 10% */
+    transition: transform 0.3s ease; /* Hiệu ứng mượt mà */
+    display: inline-block; /* Giúp transform hoạt động chính xác */
+  }  
+  /* Phần chân trang */
+  footer {
+    background-color: #003366;    /* Nền xanh đậm */
+    color: white;                 /* Chữ trắng */
+    font-size: 12px;
+    text-align: center; /* Căn giữa nội dung */
+    margin: 0;            /* Xóa khoảng cách bên ngoài */
+    width: 100vw;         /* Tràn toàn bộ chiều ngang */
+  }   
+.footer-left,
+.footer-support,
+.footer-service,
+.footer-right {
+    margin-bottom: 0px;
+  }
+.footer-bottom {
+    text-align: center;
+    margin-top: 0px;
+  } 
+  /* Liên kết mạng xã hội trong footer */
+  .social-links a {
+    margin: 0 10px;     
+    color: white;       
+    text-decoration: none;  /* Bỏ gạch chân */
+  }
+  /* Hiệu ứng hover cho liên kết mạng xã hội */
+  .social-links a:hover {
+    text-decoration: underline;   /* Hiện gạch chân khi hover */
+  }
+/* Hiệu ứng mờ dần khi chuyển ảnh */
+@keyframes fade {
+    from {opacity: 0.4} /* Bắt đầu mờ */
+    to {opacity: 1}     /* Kết thúc rõ nét */
+}
+  /* Responsive cho thiết bị nhỏ hơn 768px */
+@media (max-width: 768px) {
+nav {
+    flex-direction: column; /* Menu xếp dọc thay vì ngang */
+    align-items: center;    /* Căn giữa các mục */
+    }
+    .search-form {
+    margin-top: 10px;
+  }
+  .footer-container {
+      flex-direction: column;
+      text-align: center;
+    }
+}
+  </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+          <div class="header-left">
+            <img src="{% static 'images/logo-trangle1.png' %}" alt="TrangLee Logo">
+          </div>
+          <div class="header-center">
+            <h4>CÔNG TY TNHH TRANG LEE</h4>
+            <h4>Nhà phân phối chính thức Piaggio Việt Nam</h4>
+          </div>
+          <div class="header-right">
+            <img src="{% static 'images/Piaggio.png' %}" alt="Piaggio Logo">
+            <img src="{% static 'images/vespa.png' %}" alt="Vespa Logo">
+          </div>
+        </div>
+      </header>     
+  <nav>
+    <a href="#">Trang chủ</a>
+    <a href="#">Giới thiệu</a>
+    <a href="#">Sản phẩm</a>
+    <a href="#">Showroom</a>
+    <a href="#">Dịch vụ</a>
+    <a href="#">Tin tức</a>
+    <a href="#">Ưu đãi Online</a>
+    <!-- Ô tìm kiếm -->
+    <form class="search-form" action="/tim-kiem" method="GET">
+      <input type="text" name="q" placeholder="Tìm kiếm..." />
+      <button type="submit">🔍</button>
+    </form>
+  </nav>
+  <main>
+        <!--Thêm sdile ảnh-->
+        <div class="slideshow-container">
+            {% for img in images %}
+              <div class="slide">
+                <img src="{{ img.image.url }}" alt="Ảnh hoạt động">
+              </div>
+            {% endfor %}
+          </div>                          
+  </main>
+  <footer>
+    <div class="footer-container">
+      <!-- Trái -->
+      <div class="footer-left">
+        <h4>Sản phẩm</h4>
+        <ul>
+          <li><a href="#">Piaggio Liberty</a></li>
+          <li><a href="#">Piaggio Medley</a></li>
+          <li><a href="#">Vespa Primavera</a></li>
+          <li><a href="#">Vespa Sprint</a></li>
+        </ul>
+      </div>  
+      <!-- Hỗ trợ -->
+      <div class="footer-support">
+        <h4>Hỗ trợ</h4>
+        <ul>
+          <li><a href="#">Mua xe trả góp</a></li>
+          <li><a href="#">Thông tin thanh toán</a></li>
+          <li><a href="#">Thông tin khuyến mãi</a></li>
+          <li><a href="#">Chăm sóc khách hàng</a></li>
+          <li><a href="#">Chính sách bảo mật</a></li>
+        </ul>
+      </div>    
+      <!-- Dịch vụ -->
+      <div class="footer-service">
+        <h4>Dịch vụ</h4>
+        <ul>
+          <li><a href="#">Bảo dưỡng định kỳ</a></li>
+          <li><a href="#">Sửa chữa chuyên nghiệp</a></li>
+          <li><a href="#">Đặt lịch dịch vụ</a></li>
+        </ul>
+      </div>    
+      <!-- Giới thiệu -->
+      <div class="footer-right">
+        <h4>Giới thiệu</h4>
+        <ul>
+          <li><a href="#">Giới thiệu về công ty</a></li>
+          <li><a href="#">Hoạt động & sự kiện</a></li>
+          <li><a href="#">Thông tin tuyển dụng</a></li>
+        </ul>
+      </div>
+    </div>    
+    <div class="footer-bottom">
+      <div class="social-links">
+        <a href="https://www.facebook.com/VespaTrangLee">Facebook</a>
+        <a href="#">YouTube</a>
+        <a href="#">Zalo</a>
+        <a href="tel:1800255898">Hotline: 1800 255 898</a>
+      </div>
+      <p>&copy; 2025 TrangLee. All rights reserved.</p>
+    </div>
+  </footer> 
+  <script>
+    let slideIndex = 0;
+    showSlides();
+    function showSlides() {
+      let slides = document.getElementsByClassName("slide");
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) { slideIndex = 1 }
+      slides[slideIndex - 1].style.display = "block";
+      setTimeout(showSlides, 3000); // Chuyển ảnh sau mỗi 3 giây
+    }
+  </script>  
+</body>
+</html>
