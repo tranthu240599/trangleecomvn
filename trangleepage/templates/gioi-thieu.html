@@ -138,25 +138,6 @@ nav a:hover { /* Hiệu ứng khi rê chuột vào liên kết */
 .search-form button:hover {
   background-color: #426f9c;
 }
-/* Khung chứa slideshow */
-.slideshow-container {
-    position: relative; /* Cho phép định vị các phần tử con */
-    width: 100%; /* Chiếm toàn bộ chiều ngang màn hình */
-    overflow: hidden; /* Ẩn phần vượt ra ngoài khung */
-}
-/* Mỗi slide ảnh */
-.slide {
-    display: none; /* Ẩn tất cả slide, chỉ hiển thị 1 cái tại 1 thời điểm */
-    width: 100%; /* Chiếm toàn bộ chiều ngang */
-    animation: fade 1s ease-in-out; /* Hiệu ứng mờ dần khi chuyển ảnh */
-}
-/* Ảnh trong slide */
-.slide img {
-    width: 100%; /* Chiếm toàn bộ chiều ngang */
-    height: auto;/*700px;         /* Chiều cao mong muốn */
-    object-fit: cover; /*contain;   /* Giữ nguyên ảnh *//* Ảnh lấp đầy khung, có thể bị cắt mép*/ 
-    display: block; /* Loại bỏ khoảng trắng dưới ảnh */
-}
 .footer-container {
     display: flex;                  /* Kích hoạt Flexbox */
     justify-content: space-between;/* Căn đều các cột */
@@ -244,6 +225,103 @@ footer p a:hover {
   margin: 10px 20px;
   color: #b8cfb0;
 }
+/***** GIỚI THIỆU *****/
+
+/* Phần banner chứa ảnh đầu trang */
+.banner {
+  width: 100%;              /* Chiếm toàn bộ chiều ngang màn hình */
+  overflow: hidden;         /* Ẩn phần nội dung vượt ra ngoài khung */
+}
+
+.banner img {
+  width: 100%;              /* Ảnh phủ toàn bộ chiều ngang */
+  height: 300px;            /* Chiều cao cố định là 300px */
+  display: block;           /* Loại bỏ khoảng trắng dưới ảnh */
+  object-fit: cover;        /* Cắt ảnh để vừa khung, không méo hình */
+}
+
+/* Khối nội dung giới thiệu chính */
+.gioi-thieu {
+  max-width: 960px;         /* Giới hạn chiều rộng tối đa */
+  margin: 20px auto;        /* Canh giữa và cách trên dưới 40px */
+  padding: 0 20px;          /* Lề trái phải 20px */
+}
+
+/* Tiêu đề phần giới thiệu */
+.gioi-thieu-chinh h1 {
+  color: #145a9f;
+  margin-bottom: 0px;
+}
+/* Đoạn văn giới thiệu */
+.gioi-thieu-chinh p {
+  font-size: 14px;
+  line-height: 1;           /* Khoảng cách dòng sát nhau */
+  margin-bottom: 0px;
+}
+/* Khối chứa các mục chọn bên dưới */
+.chon-muc {
+  display: flex;            /* Hiển thị các mục theo hàng ngang */
+  justify-content: space-around; /* Cách đều các mục */
+  gap: 20px;                /* Khoảng cách giữa các mục */
+  font-size: 20px;          /* Cỡ chữ lớn cho tiêu đề mục */
+  font-weight: bold;        /* Chữ đậm */
+}
+/* Hiệu ứng khi rê chuột vào box */
+.chon-muc :hover {
+  background-color: #95c4e6; /*Màu nền sáng hơn*/
+  color: rgb(165, 32, 32);
+}
+/* Đường phân cách nếu có */
+.divider {
+  margin: 0px 0px;          /* Không cách trên dưới */
+  color: #b8cfb0;           /* Màu nhạt cho đường phân cách */
+}
+.bai-viet-2cot {
+  display: flex;
+  flex-direction: row;        /* Mặc định: hình trái, chữ phải */
+  flex-wrap: nowrap;          /* Không xuống dòng */
+  align-items: flex-start;    /* Canh trên cùng */
+  gap: 20px;
+  width: 100%;
+  max-width: 960px;
+  margin: 5px auto;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  font-family:'Times New Roman', Times, serif;
+}
+.bai-viet-2cot.reverse {
+  flex-direction: row-reverse; /* Đảo chiều: hình bên phải, chữ bên trái */
+}
+.cot-hinh {
+  flex: 1 1 50%;
+  text-align: center;
+}
+.cot-hinh img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  object-fit: cover;
+}
+.cot-chu {
+  flex: 1 1 60%;
+}
+.cot-chu h2 {
+  color: #145a9f;
+  margin-bottom: 0px;
+  margin: 0px auto;
+  padding: 0px;
+}
+.cot-chu p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: black;
+  margin: 0px auto;
+  padding: 0px;
+}
+
+
+
 /* Hiệu ứng mờ dần khi chuyển ảnh */
 @keyframes fade {
     from {opacity: 0.4} /* Bắt đầu mờ */
@@ -283,7 +361,7 @@ nav {
   <nav>
     <nav class="nav-bar">
       <ul class="nav-menu">
-        <li><a href="#">Trang chủ</a></li>    
+        <li><a href="{% url 'home' %}">Trang chủ</a></li>    
         <li class="has-submenu">
           <a href="{% url 'gioi_thieu' %}">Giới thiệu</a>
           <ul class="submenu">
@@ -331,15 +409,59 @@ nav {
     </form>
   </nav>
   <main>
-        <!--Thêm sdile ảnh-->
-        <div class="slideshow-container">
-            {% for img in images %}
-              <div class="slide">
-                <img src="{{ img.image.url }}" alt="Ảnh hoạt động">
-              </div>
-            {% endfor %}
-          </div>                          
-  </main>
+    <div class="banner">
+      <img src="{% static 'images/gioithieuxe.png' %}" alt="Ảnh giới thiệu công ty">
+    </div>
+<main class="gioi-thieu">
+  <section class="gioi-thieu-chinh">
+      <div class="chon-muc">
+      <a href="{% url 'gioi_thieu' %}" class="box {% if active_section == 'gioi_thieu' %}active{% endif %}">Giới thiệu về công ty</a>
+      <a href="{% url 'gioi_thieu' %}" class="box {% if active_section == 'su_kien' %}active{% endif %}">Hoạt động & Sự kiện</a>
+      <a href="{% url 'gioi_thieu' %}" class="box {% if active_section == 'lien_he' %}active{% endif %}">Liên hệ</a>
+    </div>
+    <h1>Giới thiệu về Công ty TNHH Trang Lee</h1>
+    <!-- Bài 1: hình trái, chữ phải -->
+    <div class="bai-viet-2cot">
+      <div class="cot-hinh">
+        <img src="{% static 'images/TrangLee_5.png' %}" alt="Cam kết">
+      </div>
+      <div class="cot-chu">
+        <h2>Cam kết</h2>
+        <p>Là nhà phân phối chính thức của Piaggio Việt Nam tại Đà Nẵng và Quảng Nam, 
+          Trang Lê tự hào mang đến có khách hàng những sản phẩm thời trang chất lượng nhất. 
+          Cùng với uy tín của công ty, sự tận tâm của đội ngũ nhân viên và dịch vụ hoàn hảo, 
+          cửa hàng Trang Lê sẽ đem lại các giá trị xứng đáng và truyền cảm hứng của Piaggio tới người tiêu dùng. Bên cạnh đó, 
+          Trang Lê cũng mong muốn được hoàn thiện và nâng cao chất lượng dịch vụ nhằm củng cố lòng tin và thỏa mãn nhu cầu của khách hàng.</p>
+      </div>
+    </div>
+    <!-- Bài 2: chữ trái, hình phải -->
+    <div class="bai-viet-2cot reverse">
+      <div class="cot-hinh">
+        <img src="{% static 'images/TrangLee_6.jpg' %}" alt="Thành lập và hoạt động">
+      </div>
+      <div class="cot-chu">
+        <h2>Thời gian thành lập & hoạt động</h2>
+        <p>Thành lập vào năm 2010, Hệ thống Piaggio Trang Lê đã cung cấp những sản phẩm chất lượng từ công ty Piaggio Việt Nam
+           cho hầu hết những khách hàng yêu mến thương hiệu này tại Đà Nẵng, Quảng Nam và một số tỉnh thành lân cận.
+           Đến với các showroom của Trang Lê, khách hàng có thể lựa chọn những sản phẩm xe máy Vespa/Piaggio nhập khẩu và trong nước cũng như được cung cấp dịch vụ sửa chữa và phụ tùng chính hãng. Vinh dự là một trong những đại lý của Piaggio Việt Nam, Trang Lê mong muốn sẽ tạo dựng được lòng tin của khách hàng cũng như nâng cao uy tín của công ty. 
+           Niềm tin của khách hàng là tài sản lớn nhất của công ty chúng tôi.</p>
+      </div>
+    </div>
+    <!-- Bài 3: hình trái, chữ phải -->
+    <div class="bai-viet-2cot">
+      <div class="cot-hinh">
+        <img src="{% static 'images/TrangLee_7.jpg' %}" alt="Đội ngũ nhân viên">
+      </div>
+      <div class="cot-chu">
+        <h2>Đội ngũ nhân viên</h2>
+        <p>Cùng với đội ngũ nhân viên bán hàng và kĩ thuật được đào tạo chuyên nghiệp và có thái độ nhiệt tình,
+          Trang Lê luôn sẵn sàng mang đến cho khách hàng những dịch vụ tốt nhất.</p>
+      </div>
+    </div>
+
+  </section>
+
+</main>
   <footer>
     <div class="footer-container">
       <!-- Trái -->
@@ -398,12 +520,10 @@ nav {
       <p>
         &copy; 2025 TrangLee. 
         Email: <a href="mailto:lienhe@tranglee.vn">lienhe@tranglee.vn</a> 
-        <span class="divider">|</span> 
         <a href="http://www.vespa.com.vn/">Vespa Việt Nam</a> 
         <span class="divider">|</span> 
         <a href="http://www.piaggio.com.vn/">Piaggio Việt Nam</a>
-      </p>
-            
+      </p>       
     </div>
   </footer> 
   <script>

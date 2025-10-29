@@ -4,6 +4,16 @@ from .models import  GalleryImage
 def home(request):
     images = GalleryImage.objects.all()
     return render(request, 'home.html', {'images': images})
+def gioi_thieu(request):
+    return render(request, 'gioi-thieu.html')
+def gioi_thieu_view(request):
+    return render(request, 'trang_chu.html', {'active_section': 'gioi_thieu'})
+
+def su_kien_view(request):
+    return render(request, 'trang_chu.html', {'active_section': 'su_kien'})
+
+def lien_he_view(request):
+    return render(request, 'trang_chu.html', {'active_section': 'lien_he'})
 
 
 #-----------------------Thêm sdile ảnh--------------------
