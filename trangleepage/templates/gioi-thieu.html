@@ -271,6 +271,13 @@ footer p a:hover {
   background-color: #95c4e6; /*Màu nền sáng hơn*/
   color: rgb(165, 32, 32);
 }
+.chon-muc .box.active {
+  background-color: #ffcc00;     /* Màu nền nổi bật */
+  color: #003366;                /* Màu chữ đậm */
+  border: 2px solid #003366;     /* Viền nổi bật */
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+}
+
 /* Đường phân cách nếu có */
 .divider {
   margin: 0px 0px;          /* Không cách trên dưới */
@@ -349,7 +356,7 @@ nav {
             <img src="{% static 'images/logo-trangle1.png' %}" alt="TrangLee Logo">
           </div>
           <div class="header-center">
-            <h3 style="margin: 0px 0; font-weight: 900;">CÔNG TY TNHH TRANG LEE</h3> 
+            <h3 style="margin: 0px 0; font-weight: 900;">CÔNG TY TNHH TRANG LÊ</h3> 
             <h4 style="margin: 0px 0; font-weight: 100;">Nhà phân phối chính thức Piaggio Việt Nam</h4>           
           </div>
           <div class="header-right">
@@ -414,10 +421,10 @@ nav {
     </div>
 <main class="gioi-thieu">
   <section class="gioi-thieu-chinh">
-      <div class="chon-muc">
+    <div class="chon-muc">
       <a href="{% url 'gioi_thieu' %}" class="box {% if active_section == 'gioi_thieu' %}active{% endif %}">Giới thiệu về công ty</a>
-      <a href="{% url 'gioi_thieu' %}" class="box {% if active_section == 'su_kien' %}active{% endif %}">Hoạt động & Sự kiện</a>
-      <a href="{% url 'gioi_thieu' %}" class="box {% if active_section == 'lien_he' %}active{% endif %}">Liên hệ</a>
+      <a href="{% url 'su_kien' %}" class="box {% if active_section == 'su_kien' %}active{% endif %}">Hoạt động & Sự kiện</a>
+      <a href="{% url 'lien_he' %}" class="box {% if active_section == 'lien_he' %}active{% endif %}">Liên hệ</a>
     </div>
     <h1>Giới thiệu về Công ty TNHH Trang Lee</h1>
     <!-- Bài 1: hình trái, chữ phải -->
@@ -490,7 +497,7 @@ nav {
         <h4>Dịch vụ</h4>
         <ul>
           <li><a href="#">Bảo dưỡng định kỳ</a></li>
-          <li><a href="#">Địa điễm bảo dưỡng</a></li>
+          <li><a href="#">Địa điểm bảo dưỡng</a></li>
           <li><a href="#">Đặt lịch dịch vụ</a></li>
         </ul>
       </div>    

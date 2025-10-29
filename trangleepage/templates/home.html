@@ -8,12 +8,6 @@
 <title>Trang Chủ</title>
   <style>
     /* Thiết lập cơ bản cho toàn bộ trang */
-body {
-    margin: 0; /* Xóa khoảng trắng mặc định xung quanh trang */
-    font-family: 'Poppins', sans-serif; /* Sử dụng font chữ Poppins, nếu không có thì dùng sans-serif */
-    background-color: #ffffff;
-    color: #003366;
-}
 /* Phần đầu trang */
 header {
     background-color: white;
@@ -58,15 +52,11 @@ header {
 }
 /* Thanh điều hướng (menu) */
 nav {
-    background-color: #005599; /* Nền xanh sáng hơn */
+    background-color: #3a80b9; /* Nền xanh sáng hơn */
     display: flex; /* Hiển thị các mục theo hàng ngang */
     justify-content: center; /* Căn giữa các mục */
     gap: 20px; /* Khoảng cách giữa các mục là 20px */
     padding: 2.5px 0; /* Khoảng cách trên và dưới là 10px */
-}
-nav a { /* Các liên kết trong menu */
-    color: white;
-    font-weight: bold; /* Chữ đậm */
 }
 nav a:hover { /* Hiệu ứng khi rê chuột vào liên kết */
     color: #ffcc00;
@@ -86,7 +76,7 @@ nav a:hover { /* Hiệu ứng khi rê chuột vào liên kết */
   text-decoration: none;
   padding: 0px 20px;
   display: block;
-  font-weight: bold;
+  font-weight: 100;
 }
 .nav-menu a:hover {
   background-color: #003366;
@@ -198,7 +188,7 @@ footer ul li a:hover {
     display: inline-block; /* Giúp transform hoạt động chính xác */
   }  
 footer {   /* Phần chân trang */
-    background-color: #003366;
+    background-color: #3a80b9;
     color: white;
     font-size: 12px;
     text-align: center; /* Căn giữa nội dung */
@@ -271,7 +261,7 @@ nav {
             <img src="{% static 'images/logo-trangle1.png' %}" alt="TrangLee Logo">
           </div>
           <div class="header-center">
-            <h3 style="margin: 0px 0; font-weight: 900;">CÔNG TY TNHH TRANG LEE</h3> 
+            <h3 style="margin: 0px 0; font-weight: 900;">CÔNG TY TNHH TRANG LÊ</h3> 
             <h4 style="margin: 0px 0; font-weight: 100;">Nhà phân phối chính thức Piaggio Việt Nam</h4>           
           </div>
           <div class="header-right">
@@ -368,7 +358,7 @@ nav {
         <h4>Dịch vụ</h4>
         <ul>
           <li><a href="#">Bảo dưỡng định kỳ</a></li>
-          <li><a href="#">Địa điễm bảo dưỡng</a></li>
+          <li><a href="#">Địa điểm bảo dưỡng</a></li>
           <li><a href="#">Đặt lịch dịch vụ</a></li>
         </ul>
       </div>    
