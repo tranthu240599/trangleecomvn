@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<title>Giới Thiệu</title>
+<title>Trang Chủ</title>
   <style>
     /* Thiết lập cơ bản cho toàn bộ trang */
 /* Phần đầu trang */
@@ -281,51 +281,102 @@ footer p a:hover {
   background-color: #95c4e6; /* Màu sáng hơn */
   color: rgb(211, 29, 29);   /* Màu chữ nổi bật */
 }
-/* Đường phân cách nếu có */
-.bai-viet-2cot {
+/*---------LIÊN HỆ-----------*/
+.lien-he-container {
   display: flex;
-  flex-direction: row;        /* Mặc định: hình trái, chữ phải */
-  flex-wrap: nowrap;          /* Không xuống dòng */
-  align-items: flex-start;    /* Canh trên cùng */
-  gap: 20px;
-  width: 100%;
-  max-width: 960px;
-  margin: 5px auto;
-  padding: 10px;
-  background-color: #f9f9f9;
-  border-radius: 12px;
-  font-family:'Times New Roman', Times, serif;
+  flex-wrap: wrap;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 10px auto;
+  padding: 15px 15px;
+  background-color: #f0f2f5;
+  border-radius: 3px;
 }
-.bai-viet-2cot.reverse {
-  flex-direction: row-reverse; /* Đảo chiều: hình bên phải, chữ bên trái */
+/* Bên trái: form gửi yêu cầu */
+.form-left {
+  flex: 1;
+  min-width: 300px;
 }
-.cot-hinh {
-  flex: 1 1 50%;
-  text-align: center;
+.form-box {
+  border: 1px solid #dfdbdb;
+  border-radius: 10px;
+  padding: 35px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 5px rgba(0,0,0,0.06);
+  transition: box-shadow 0.3s ease;
 }
-.cot-hinh img {
-  width: 100%;
-  max-width: 400px;
-  height: auto;
-  object-fit: cover;
+.form-box:hover {
+  box-shadow: 0 15px 18px rgba(0,0,0,0.1);
 }
-.cot-chu {
-  flex: 1 1 60%;
-}
-.cot-chu h2 {
+.form-box h2 {
+  margin-bottom: 10px;
   color: #145a9f;
-  margin-bottom: 0px;
-  margin: 0px auto;
-  padding: 0px;
+  font-size: 22px;
 }
-.cot-chu p {
-  font-size: 16px;
-  line-height: 1.6;
-  color: black;
-  margin: 0px auto;
-  padding: 0px;
+
+form input,
+form textarea {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
 }
-/* Hiệu ứng mờ dần khi chuyển ảnh */
+form input:focus,
+form textarea:focus {
+  border-color: #145a9f;
+  outline: none;
+}
+form button {
+  background-color: #145a9f;
+  color: white;
+  padding: 10px 24px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+form button:hover {
+  background-color: #0d3f73;
+}
+
+/* Bên phải: thông tin liên hệ */
+.info-right {
+  flex: 1;
+  min-width: 320px;
+}
+.info-right h2 {
+  color: #2e89e5;
+  margin-bottom: 20px;
+  font-size: 22px;
+}
+/* Khung showroom riêng biệt */
+.showroom {
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 20px 25px;
+  margin-bottom: 25px;
+  background-color: #fdfdfd;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+.showroom:hover {
+  transform: translateY(-4px);
+}
+.showroom h3 {
+  margin-top: 0;
+  color: #145a9f;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.showroom p {
+  margin: 6px 0;
+  font-size: 15px;
+  color: #333;
+}
 /* Hiệu ứng mờ dần khi chuyển ảnh */
 @keyframes fade {
     from {opacity: 0.4} /* Bắt đầu mờ */
@@ -354,6 +405,9 @@ footer p a:hover {
     text-align: center;
     font-size: 18px;
   }
+  .lien-he-container {
+    flex-direction: column;
+  }
 }
   </style>
 </head>
@@ -381,7 +435,7 @@ footer p a:hover {
           <a href="{% url 'gioi_thieu' %}">Giới thiệu</a>
           <ul class="submenu">
             <li><a href="{% url 'gioi_thieu' %}">Giới thiệu về công ty</a></li>
-            <li><a href="#">Thông tin tuyển dụng</a></li>
+            <li><a href="{% url 'tuyen_dung' %}">Thông tin tuyển dụng</a></li>
             <li><a href="#">Liên hệ</a></li>
           </ul>
         </li>   
@@ -430,50 +484,42 @@ footer p a:hover {
 <main class="gioi-thieu">
   <section class="gioi-thieu-chinh">
     <div class="chon-muc">
-      <a href="{% url 'gioi_thieu' %}" class="active">Giới thiệu về công ty</a>
-      <a href="{% url 'tuyen_dung' %}">Thông tin tuyển dụng</a>
-      <a href="{% url 'lien_he' %}">Liên hệ</a>
-    </div>
-    <h1>Giới thiệu về Công ty TNHH Trang Lê</h1>
-    <!-- Bài 1: hình trái, chữ phải -->
-    <div class="bai-viet-2cot">
-      <div class="cot-hinh">
-        <img src="{% static 'images/TrangLee_5.png' %}" alt="Cam kết">
-      </div>
-      <div class="cot-chu">
-        <h2>Cam kết</h2>
-        <p>Là nhà phân phối chính thức của Piaggio Việt Nam tại Đà Nẵng và Quảng Nam, 
-          Trang Lê tự hào mang đến có khách hàng những sản phẩm thời trang chất lượng nhất. 
-          Cùng với uy tín của công ty, sự tận tâm của đội ngũ nhân viên và dịch vụ hoàn hảo, 
-          cửa hàng Trang Lê sẽ đem lại các giá trị xứng đáng và truyền cảm hứng của Piaggio tới người tiêu dùng. Bên cạnh đó, 
-          Trang Lê cũng mong muốn được hoàn thiện và nâng cao chất lượng dịch vụ nhằm củng cố lòng tin và thỏa mãn nhu cầu của khách hàng.</p>
-      </div>
-    </div>
-    <!-- Bài 2: chữ trái, hình phải -->
-    <div class="bai-viet-2cot reverse">
-      <div class="cot-hinh">
-        <img src="{% static 'images/TrangLee_6.jpg' %}" alt="Thành lập và hoạt động">
-      </div>
-      <div class="cot-chu">
-        <h2>Thời gian thành lập & hoạt động</h2>
-        <p>Thành lập vào năm 2010, Hệ thống Piaggio Trang Lê đã cung cấp những sản phẩm chất lượng từ công ty Piaggio Việt Nam
-           cho hầu hết những khách hàng yêu mến thương hiệu này tại Đà Nẵng, Quảng Nam và một số tỉnh thành lân cận.
-           Đến với các showroom của Trang Lê, khách hàng có thể lựa chọn những sản phẩm xe máy Vespa/Piaggio nhập khẩu và trong nước cũng như được cung cấp dịch vụ sửa chữa và phụ tùng chính hãng. Vinh dự là một trong những đại lý của Piaggio Việt Nam, Trang Lê mong muốn sẽ tạo dựng được lòng tin của khách hàng cũng như nâng cao uy tín của công ty. 
-           Niềm tin của khách hàng là tài sản lớn nhất của công ty chúng tôi.</p>
-      </div>
-    </div>
-    <!-- Bài 3: hình trái, chữ phải -->
-    <div class="bai-viet-2cot">
-      <div class="cot-hinh">
-        <img src="{% static 'images/TrangLee_7.jpg' %}" alt="Đội ngũ nhân viên">
-      </div>
-      <div class="cot-chu">
-        <h2>Đội ngũ nhân viên</h2>
-        <p>Cùng với đội ngũ nhân viên bán hàng và kĩ thuật được đào tạo chuyên nghiệp và có thái độ nhiệt tình,
-          Trang Lê luôn sẵn sàng mang đến cho khách hàng những dịch vụ tốt nhất.</p>
-      </div>
-    </div>
+        <a href="{% url 'gioi_thieu' %}">Giới thiệu về công ty</a>
+        <a href="{% url 'tuyen_dung' %}">Thông tin tuyển dụng</a>
+        <a href="{% url 'lien_he' %}" class="active">Liên hệ</a>
+      </div>           
   </section>
+  <div class="lien-he-container">
+    <div class="form-left">
+      <div class="form-box">
+        <h2>Gửi yêu cầu trực tiếp</h2>
+        <form method="POST" action="/gui-yeu-cau/">
+          {% csrf_token %}
+          <input type="text" name="ho_ten" placeholder="Họ và tên" required>
+          <input type="email" name="email" placeholder="Email" required>
+          <input type="text" name="so_dien_thoai" placeholder="Số điện thoại" required>
+          <textarea name="noi_dung" placeholder="Nội dung yêu cầu" rows="5" required></textarea>
+          <button type="submit">Gửi yêu cầu</button>
+        </form>
+      </div>
+    </div>    
+    <div class="info-right">
+      <h2>Thông tin liên hệ</h2>
+      <div class="showroom">
+        <h3>Piaggio Trang Lee 1 (Đà Nẵng)</h3>
+        <p>Hotline: 1800 255 898</p>
+        <p>Điện thoại bàn: 1800 255 898</p>
+        <p>Email: <a href="contact@tienthu.vn">contact@tienthu.vn</a></p>
+        <p>Địa chỉ : 13 - 15 Hùng Vương - Hải Châu - Đà Nẵng</p>
+      </div>
+      <div class="showroom">
+        <h3>Piaggio Trang Lee 2 (Quảng Nam)</h3>
+        <p>Hotline: 1800 255 898</p>
+        <p>Điện thoại bàn: 0235 3811168/0235 3811179</p>
+        <p>Email: <a href="contact@tienthu.vn">contact@tienthu.vn</a></p>
+        <p>Địa chỉ : 136 Phan Bội Châu - TP. Tam Kỳ</p>
+      </div>
+  </div>  
 </main>
   <footer>
     <div class="footer-container">
@@ -533,7 +579,7 @@ footer p a:hover {
       <p>
         <p>
           &copy; 2025 TrangLee. 
-          Email: <a href="mailto:contact@tienthu.vn">contact@tienthu.vn</a> 
+          Email: <a href="mailto:contact@tienthu.vn">contact@tienthu.vn</a>  
           <span class="divider">|</span> 
           <a href="http://www.vespa.com.vn/">Vespa Việt Nam</a> 
           <span class="divider">|</span> 

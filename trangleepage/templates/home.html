@@ -241,7 +241,7 @@ footer p a:hover {
 }
   /* Responsive cho thiết bị nhỏ hơn 768px */
 @media (max-width: 768px) {
-nav {
+  nav {
     flex-direction: column; /* Menu xếp dọc thay vì ngang */
     align-items: center;    /* Căn giữa các mục */
     }
@@ -251,6 +251,7 @@ nav {
     .footer-container {
     flex-direction: row; /* Giữ ngang */
     overflow-x: auto;
+  }
 }
   </style>
 </head>
@@ -278,8 +279,8 @@ nav {
           <a href="{% url 'gioi_thieu' %}">Giới thiệu</a>
           <ul class="submenu">
             <li><a href="{% url 'gioi_thieu' %}">Giới thiệu về công ty</a></li>
-            <li><a href="#">Thông tin tuyển dụng</a></li>
-            <li><a href="#">Liên hệ</a></li>
+            <li><a href="{% url 'tuyen_dung' %}">Thông tin tuyển dụng</a></li>
+            <li><a href="{% url 'lien_he' %}">Liên hệ</a></li>
           </ul>
         </li>   
         <li class="has-submenu">
@@ -368,8 +369,8 @@ nav {
         <ul>
           <li><a href="{% url 'gioi_thieu' %}">Giới thiệu về công ty</a></li>
           <li><a href="#">Hoạt động & sự kiện</a></li>
-          <li><a href="#">Thông tin tuyển dụng</a></li>
-          <li><a href="#">Liên hệ</a></li>
+          <li><a href="{% url 'tuyen_dung' %}">Thông tin tuyển dụng</a></li>
+          <li><a href="{% url 'lien_he' %}">Liên hệ</a></li>
         </ul>
       </div>
     </div>    
@@ -387,7 +388,7 @@ nav {
       </div>
       <p>
         &copy; 2025 TrangLee. 
-        Email: <a href="mailto:lienhe@tranglee.vn">lienhe@tranglee.vn</a> 
+        Email: <a href="mailto:contact@tienthu.vn">contact@tienthu.vn</a> 
         <span class="divider">|</span> 
         <a href="http://www.vespa.com.vn/">Vespa Việt Nam</a> 
         <span class="divider">|</span> 

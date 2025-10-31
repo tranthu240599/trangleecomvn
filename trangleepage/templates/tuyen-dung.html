@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<title>Giới Thiệu</title>
+<title>Tuyển dụng</title>
   <style>
     /* Thiết lập cơ bản cho toàn bộ trang */
 /* Phần đầu trang */
@@ -281,51 +281,34 @@ footer p a:hover {
   background-color: #95c4e6; /* Màu sáng hơn */
   color: rgb(211, 29, 29);   /* Màu chữ nổi bật */
 }
-/* Đường phân cách nếu có */
-.bai-viet-2cot {
-  display: flex;
-  flex-direction: row;        /* Mặc định: hình trái, chữ phải */
-  flex-wrap: nowrap;          /* Không xuống dòng */
-  align-items: flex-start;    /* Canh trên cùng */
-  gap: 20px;
-  width: 100%;
-  max-width: 960px;
-  margin: 5px auto;
-  padding: 10px;
-  background-color: #f9f9f9;
-  border-radius: 12px;
-  font-family:'Times New Roman', Times, serif;
-}
-.bai-viet-2cot.reverse {
-  flex-direction: row-reverse; /* Đảo chiều: hình bên phải, chữ bên trái */
-}
-.cot-hinh {
-  flex: 1 1 50%;
-  text-align: center;
-}
-.cot-hinh img {
-  width: 100%;
-  max-width: 400px;
-  height: auto;
-  object-fit: cover;
-}
-.cot-chu {
-  flex: 1 1 60%;
-}
-.cot-chu h2 {
-  color: #145a9f;
-  margin-bottom: 0px;
-  margin: 0px auto;
-  padding: 0px;
-}
-.cot-chu p {
-  font-size: 16px;
-  line-height: 1.6;
-  color: black;
-  margin: 0px auto;
-  padding: 0px;
-}
-/* Hiệu ứng mờ dần khi chuyển ảnh */
+/*---------TUYỂN DỤNG----------*/
+.tuyen-dung {
+      max-width: 800px;
+      margin: 10px;
+      background: white;
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .tuyen-dung h1 {
+      color: #145a9f;
+      text-align: center;
+    }
+    .job h2 {
+      color: black;
+      margin-bottom: 5px;
+    }
+    .job ul {
+      padding-left: 30px;
+    }
+    .job ul li {
+      margin-bottom: 5px;
+    }
+    .apply {
+      text-align: center;
+      margin-top: 20px;
+    }
+    
 /* Hiệu ứng mờ dần khi chuyển ảnh */
 @keyframes fade {
     from {opacity: 0.4} /* Bắt đầu mờ */
@@ -354,6 +337,15 @@ footer p a:hover {
     text-align: center;
     font-size: 18px;
   }
+  .tuyen-dung {
+    padding: 20px;
+  }
+  .job h2 {
+    font-size: 18px;
+  }
+  .job ul li {
+    font-size: 14px;
+  }
 }
   </style>
 </head>
@@ -381,8 +373,8 @@ footer p a:hover {
           <a href="{% url 'gioi_thieu' %}">Giới thiệu</a>
           <ul class="submenu">
             <li><a href="{% url 'gioi_thieu' %}">Giới thiệu về công ty</a></li>
-            <li><a href="#">Thông tin tuyển dụng</a></li>
-            <li><a href="#">Liên hệ</a></li>
+            <li><a href="{% url 'tuyen_dung' %}">Thông tin tuyển dụng</a></li>
+            <li><a href="{% url 'lien_he' %}">Liên hệ</a></li>
           </ul>
         </li>   
         <li class="has-submenu">
@@ -430,49 +422,33 @@ footer p a:hover {
 <main class="gioi-thieu">
   <section class="gioi-thieu-chinh">
     <div class="chon-muc">
-      <a href="{% url 'gioi_thieu' %}" class="active">Giới thiệu về công ty</a>
-      <a href="{% url 'tuyen_dung' %}">Thông tin tuyển dụng</a>
-      <a href="{% url 'lien_he' %}">Liên hệ</a>
-    </div>
-    <h1>Giới thiệu về Công ty TNHH Trang Lê</h1>
-    <!-- Bài 1: hình trái, chữ phải -->
-    <div class="bai-viet-2cot">
-      <div class="cot-hinh">
-        <img src="{% static 'images/TrangLee_5.png' %}" alt="Cam kết">
-      </div>
-      <div class="cot-chu">
-        <h2>Cam kết</h2>
-        <p>Là nhà phân phối chính thức của Piaggio Việt Nam tại Đà Nẵng và Quảng Nam, 
-          Trang Lê tự hào mang đến có khách hàng những sản phẩm thời trang chất lượng nhất. 
-          Cùng với uy tín của công ty, sự tận tâm của đội ngũ nhân viên và dịch vụ hoàn hảo, 
-          cửa hàng Trang Lê sẽ đem lại các giá trị xứng đáng và truyền cảm hứng của Piaggio tới người tiêu dùng. Bên cạnh đó, 
-          Trang Lê cũng mong muốn được hoàn thiện và nâng cao chất lượng dịch vụ nhằm củng cố lòng tin và thỏa mãn nhu cầu của khách hàng.</p>
-      </div>
-    </div>
-    <!-- Bài 2: chữ trái, hình phải -->
-    <div class="bai-viet-2cot reverse">
-      <div class="cot-hinh">
-        <img src="{% static 'images/TrangLee_6.jpg' %}" alt="Thành lập và hoạt động">
-      </div>
-      <div class="cot-chu">
-        <h2>Thời gian thành lập & hoạt động</h2>
-        <p>Thành lập vào năm 2010, Hệ thống Piaggio Trang Lê đã cung cấp những sản phẩm chất lượng từ công ty Piaggio Việt Nam
-           cho hầu hết những khách hàng yêu mến thương hiệu này tại Đà Nẵng, Quảng Nam và một số tỉnh thành lân cận.
-           Đến với các showroom của Trang Lê, khách hàng có thể lựa chọn những sản phẩm xe máy Vespa/Piaggio nhập khẩu và trong nước cũng như được cung cấp dịch vụ sửa chữa và phụ tùng chính hãng. Vinh dự là một trong những đại lý của Piaggio Việt Nam, Trang Lê mong muốn sẽ tạo dựng được lòng tin của khách hàng cũng như nâng cao uy tín của công ty. 
-           Niềm tin của khách hàng là tài sản lớn nhất của công ty chúng tôi.</p>
-      </div>
-    </div>
-    <!-- Bài 3: hình trái, chữ phải -->
-    <div class="bai-viet-2cot">
-      <div class="cot-hinh">
-        <img src="{% static 'images/TrangLee_7.jpg' %}" alt="Đội ngũ nhân viên">
-      </div>
-      <div class="cot-chu">
-        <h2>Đội ngũ nhân viên</h2>
-        <p>Cùng với đội ngũ nhân viên bán hàng và kĩ thuật được đào tạo chuyên nghiệp và có thái độ nhiệt tình,
-          Trang Lê luôn sẵn sàng mang đến cho khách hàng những dịch vụ tốt nhất.</p>
-      </div>
-    </div>
+        <a href="{% url 'gioi_thieu' %}">Giới thiệu về công ty</a>
+        <a href="{% url 'tuyen_dung' %}" class="active">Thông tin tuyển dụng</a>
+        <a href="{% url 'lien_he' %}">Liên hệ</a>
+      </div> 
+      <div class="tuyen-dung">
+        <h1>Thông tin tuyển dụng</h1>
+        <div class="job">
+          <h2>1. Nhân viên tư vấn khách hàng</h2>
+          <ul>
+            <li>Số lượng: 3 người</li>
+            <li>Yêu cầu: Giao tiếp tốt, có kinh nghiệm là lợi thế</li>
+            <li>Quyền lợi: Lương cứng + hoa hồng + thưởng</li>
+            <li>Thời gian làm việc: Giờ hành chính</li>
+          </ul>
+        </div>
+        <div class="job">
+          <h2>2. Kỹ thuật viên bảo dưỡng</h2>
+          <ul>
+            <li>Số lượng: 2 người</li>
+            <li>Yêu cầu: Có bằng nghề, chăm chỉ, trung thực</li>
+            <li>Quyền lợi: Đào tạo nội bộ, thưởng theo năng suất</li>
+            <li>Thời gian làm việc: Theo ca</li>
+          </ul>
+        </div>
+        <div class="apply">
+          <p>📩 Gửi CV về email: <strong>tuyendung@tranglee.vn</strong></p>          
+        </div>     
   </section>
 </main>
   <footer>
