@@ -354,6 +354,9 @@ footer p a:hover {
     text-align: center;
     font-size: 18px;
   }
+  .bai-viet-2cot {
+    flex-direction: column;
+  }
 }
   </style>
 </head>
@@ -381,8 +384,8 @@ footer p a:hover {
           <a href="{% url 'gioi_thieu' %}">Giới thiệu</a>
           <ul class="submenu">
             <li><a href="{% url 'gioi_thieu' %}">Giới thiệu về công ty</a></li>
-            <li><a href="#">Thông tin tuyển dụng</a></li>
-            <li><a href="#">Liên hệ</a></li>
+            <li><a href="{% url 'tuyen_dung' %}">Thông tin tuyển dụng</a></li>
+            <li><a href="{% url 'lien_he' %}">Liên hệ</a></li>
           </ul>
         </li>   
         <li class="has-submenu">
@@ -393,10 +396,10 @@ footer p a:hover {
           </ul>
         </li>
         <li class="has-submenu">
-          <a href="#">Showroom</a>
+          <a href="% url 'showroom' %">Showroom</a>
           <ul class="submenu">
-            <li><a href="#">Đà Nẵng</a></li>
-            <li><a href="#">Quảng Nam</a></li>
+            <li><a href="{% url 'showroom' %}">Đà Nẵng</a></li>
+            <li><a href="{% url 'showroom_qn' %}">Quảng Nam</a></li>
           </ul>
         </li>
         <li class="has-submenu">

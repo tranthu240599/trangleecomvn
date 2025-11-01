@@ -291,17 +291,17 @@ footer p a:hover {
           </ul>
         </li>
         <li class="has-submenu">
-          <a href="#">Showroom</a>
+          <a href="{% url 'showroom' %}">Showroom</a>
           <ul class="submenu">
-            <li><a href="#">Đà Nẵng</a></li>
-            <li><a href="#">Quảng Nam</a></li>
+            <li><a href="{% url 'showroom' %}">Đà Nẵng</a></li>
+            <li><a href="{% url 'showroom_qn' %}">Quảng Nam</a></li>
           </ul>
         </li>
         <li class="has-submenu">
           <a href="#">Dịch vụ</a>
           <ul class="submenu">
             <li><a href="#">Bảo dưỡng định kỳ</a></li>
-            <li><a href="#">Địa điểm bảo dưỡng</a></li>
+            <li><a href="{% url 'showroom' %}">Địa điểm bảo dưỡng</a></li>
             <li><a href="#">Đặt lịch dịch vụ</a></li>
             <li><a href="#">Chăm sóc khách hàng</a></li>
           </ul>

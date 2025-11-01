@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<title>Trang Chủ</title>
+<title>Showroom Trang Lê</title>
   <style>
     /* Thiết lập cơ bản cho toàn bộ trang */
 /* Phần đầu trang */
@@ -235,42 +235,13 @@ footer p a:hover {
   color: #2b4822;
 }
 /***** GIỚI THIỆU *****/
-/* Phần banner chứa ảnh đầu trang */
-.banner {
-  width: 100%;              /* Chiếm toàn bộ chiều ngang màn hình */
-  overflow: hidden;         /* Ẩn phần nội dung vượt ra ngoài khung */
-}
-.banner img {
-  width: 100%;              /* Ảnh phủ toàn bộ chiều ngang */
-  height: 300px;            /* Chiều cao cố định là 300px */
-  display: block;           /* Loại bỏ khoảng trắng dưới ảnh */
-  object-fit: cover;        /* Cắt ảnh để vừa khung, không méo hình */
-}
-/* Khối nội dung giới thiệu chính */
-.gioi-thieu {
-  max-width: 960px;         /* Giới hạn chiều rộng tối đa */
-  margin: 20px auto;        /* Canh giữa và cách trên dưới 40px */
-  padding: 0 20px;          /* Lề trái phải 20px */
-}
-/* Tiêu đề phần giới thiệu */
-.gioi-thieu-chinh h1 {
-  color: #145a9f;
-  margin-bottom: 0px;
-}
-/* Đoạn văn giới thiệu */
-.gioi-thieu-chinh p {
-  font-size: 14px;
-  line-height: 1;           /* Khoảng cách dòng sát nhau */
-  margin-bottom: 0px;
-}
 /* Khối chứa các mục chọn bên dưới */
 .chon-muc {
   display: flex;            /* Hiển thị các mục theo hàng ngang */
   justify-content: space-around; /* Cách đều các mục */
-  gap: 20px;                /* Khoảng cách giữa các mục */
   font-size: 20px;          /* Cỡ chữ lớn cho tiêu đề mục */
   font-weight: bold;        /* Chữ đậm */
-  font-family:'Times New Roman', Times, serif;
+  margin: 10px auto;        /* Canh giữa và cách trên dưới 40px */
 }
 /* Hiệu ứng khi rê chuột vào box */
 .chon-muc a:hover {
@@ -281,101 +252,46 @@ footer p a:hover {
   background-color: #95c4e6; /* Màu sáng hơn */
   color: rgb(211, 29, 29);   /* Màu chữ nổi bật */
 }
-/*---------LIÊN HỆ-----------*/
-.lien-he-container {
+/*----------SHOWROOM-------*/
+/* Đường phân cách nếu có */
+.bai-viet-2cot {
   display: flex;
   flex-wrap: wrap;
-  gap: 30px;
-  max-width: 1200px;
-  margin: 10px auto;
-  padding: 15px 15px;
-  background-color: #f0f2f5;
-  border-radius: 3px;
+  align-items: stretch; /* 👈 giúp hai bên cao bằng nhau */
 }
-/* Bên trái: form gửi yêu cầu */
-.form-left {
+.cot-hinh {
   flex: 1;
-  min-width: 300px;
+  min-width: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.form-box {
-  border: 1px solid #dfdbdb;
-  border-radius: 10px;
-  padding: 35px;
-  background-color: #ffffff;
-  box-shadow: 0 4px 5px rgba(0,0,0,0.06);
-  transition: box-shadow 0.3s ease;
+.cot-hinh img {
+  max-width: 100%;
+  height: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
-.form-box:hover {
-  box-shadow: 0 15px 18px rgba(0,0,0,0.1);
-}
-.form-box h2 {
-  margin-bottom: 10px;
-  color: #145a9f;
-  font-size: 22px;
-}
-
-form input,
-form textarea {
-  width: 100%;
-  margin-bottom: 10px;
-  padding: 10px 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 14px;
-  transition: border-color 0.3s ease;
-}
-form input:focus,
-form textarea:focus {
-  border-color: #145a9f;
-  outline: none;
-}
-form button {
-  background-color: #145a9f;
-  color: white;
-  padding: 10px 24px;
-  border: none;
-  border-radius: 6px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-form button:hover {
-  background-color: #0d3f73;
-}
-
-/* Bên phải: thông tin liên hệ */
-.info-right {
-  flex: 1;
-  min-width: 320px;
-}
-.info-right h2 {
-  color: #2e89e5;
-  margin-bottom: 20px;
-  font-size: 22px;
-}
-/* Khung showroom riêng biệt */
 .showroom {
-  border: 1px solid #e0e0e0;
+  flex: 1;
+  background-color: #f9f9f9;
   border-radius: 10px;
-  padding: 20px 25px;
-  margin-bottom: 25px;
-  background-color: #fdfdfd;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  transition: transform 0.3s ease;
+  box-shadow: 0 10px 12px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* 👈 căn giữa nội dung theo chiều dọc */
 }
-.showroom:hover {
-  transform: translateY(-4px);
-}
-.showroom h3 {
-  margin-top: 0;
+.showroom h2 {
   color: #145a9f;
-  font-size: 18px;
-  margin-bottom: 10px;
 }
 .showroom p {
+  font-size: 20px;
   margin: 6px 0;
-  font-size: 15px;
-  color: #333;
+}
+.showroom-title {
+  text-align: center;
+  color: rgb(11, 41, 132);
 }
 /* Hiệu ứng mờ dần khi chuyển ảnh */
 @keyframes fade {
@@ -405,7 +321,7 @@ form button:hover {
     text-align: center;
     font-size: 18px;
   }
-  .lien-he-container {
+  .bai-viet-2cot {
     flex-direction: column;
   }
 }
@@ -457,7 +373,7 @@ form button:hover {
           <a href="#">Dịch vụ</a>
           <ul class="submenu">
             <li><a href="#">Bảo dưỡng định kỳ</a></li>
-            <li><a href="{% url 'showroom' %}">Địa điểm bảo dưỡng</a></li>
+            <li><a href="#">Địa điểm bảo dưỡng</a></li>
             <li><a href="#">Đặt lịch dịch vụ</a></li>
             <li><a href="#">Chăm sóc khách hàng</a></li>
           </ul>
@@ -477,53 +393,28 @@ form button:hover {
       <button type="submit">🔍</button>
     </form>
   </nav>
-  <main>
-    <div class="banner">
-      <img src="{% static 'images/gioithieuxe.png' %}" alt="Ảnh giới thiệu công ty">
-    </div>
-<main class="gioi-thieu">
-  <section class="gioi-thieu-chinh">
-    <div class="chon-muc">
-        <a href="{% url 'gioi_thieu' %}">Giới thiệu về công ty</a>
-        <a href="{% url 'tuyen_dung' %}">Thông tin tuyển dụng</a>
-        <a href="{% url 'lien_he' %}" class="active">Liên hệ</a>
-      </div>           
-  </section>
-  <div class="lien-he-container">
-    <div class="form-left">
-      <div class="form-box">
-        <h2>Gửi yêu cầu trực tiếp</h2>
-        <form method="POST" action="/gui-yeu-cau/">
-          {% csrf_token %}
-          <input type="text" name="ho_ten" placeholder="Họ và tên">
-          <input type="email" name="email" placeholder="Email">
-          <input type="text" name="so_dien_thoai" placeholder="Số điện thoại">
-          <textarea name="noi_dung" placeholder="Nội dung yêu cầu" rows="5" required></textarea>
-          {% if error %}
-            <div class="alert">{{ error }}</div>
-          {% endif %}
-          <button type="submit">Gửi yêu cầu</button>
-        </form>
+  <main class="showroom-page">
+    <section class="showroom-section">
+      <div class="chon-muc">
+        <a href="{% url 'showroom' %}" class="active">Đà Nẵng</a>
+        <a href="{% url 'showroom_qn' %}">Quảng Nam</a>
       </div>
-    </div>    
-    <div class="info-right">
-      <h2>Thông tin liên hệ</h2>
-      <div class="showroom">
-        <h3>Piaggio Trang Lee 1 (Đà Nẵng)</h3>
-        <p>Hotline: 1800 255 898</p>
-        <p>Điện thoại bàn: 1800 255 898</p>
-        <p>Email: <a href="contact@tienthu.vn">contact@tienthu.vn</a></p>
-        <p>Địa chỉ : 13 - 15 Hùng Vương - Hải Châu - Đà Nẵng</p>
+      <h1 class="showroom-title">Showroom Trang Lê</h1>
+      <!-- Showroom Đà Nẵng -->
+      <div class="bai-viet-2cot">
+        <div class="cot-hinh">
+          <img src="{% static 'images/TrangLee_7.jpg' %}" alt="Showroom Đà Nẵng">
+        </div>
+        <div class="showroom">
+          <h2>Piaggio Trang Lee 1 – Đà Nẵng</h2>
+          <p>📞 Hotline: 1800 255 898</p>
+          <p>☎️ Điện thoại bàn: 1800 255 898</p>
+          <p>✉️ Email: <a href="mailto:contact@tienthu.vn">contact@tienthu.vn</a></p>
+          <p>📍 Địa chỉ: 13–15 Hùng Vương, Hải Châu, Đà Nẵng</p>
+        </div>
       </div>
-      <div class="showroom">
-        <h3>Piaggio Trang Lee 2 (Quảng Nam)</h3>
-        <p>Hotline: 1800 255 898</p>
-        <p>Điện thoại bàn: 0235 3811168/0235 3811179</p>
-        <p>Email: <a href="contact@tienthu.vn">contact@tienthu.vn</a></p>
-        <p>Địa chỉ : 136 Phan Bội Châu - TP. Tam Kỳ</p>
-      </div>
-  </div>  
-</main>
+    </section>
+  </main>        
   <footer>
     <div class="footer-container">
       <!-- Trái -->
@@ -582,7 +473,7 @@ form button:hover {
       <p>
         <p>
           &copy; 2025 TrangLee. 
-          Email: <a href="mailto:contact@tienthu.vn">contact@tienthu.vn</a>  
+          Email: <a href="mailto:contact@tienthu.vn">contact@tienthu.vn</a> 
           <span class="divider">|</span> 
           <a href="http://www.vespa.com.vn/">Vespa Việt Nam</a> 
           <span class="divider">|</span> 
