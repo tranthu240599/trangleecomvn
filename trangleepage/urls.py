@@ -18,6 +18,8 @@ urlpatterns = [
     path('showroom-qn/', views.showroom_qn, name='showroom_qn'),
     path('dichvu/', views.dichvu, name='dichvu'),
     path('baoduong/', views.baoduong, name='baoduong'),
+    path('datlich/', views.datlich, name='datlich'),
+    path('baohanh/', views.baohanh, name='baohanh')
 
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

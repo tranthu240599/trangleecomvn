@@ -128,25 +128,6 @@ nav a:hover { /* Hiệu ứng khi rê chuột vào liên kết */
 .search-form button:hover {
   background-color: #426f9c;
 }
-/* Khung chứa slideshow */
-.slideshow-container {
-    position: relative; /* Cho phép định vị các phần tử con */
-    width: 100%; /* Chiếm toàn bộ chiều ngang màn hình */
-    overflow: hidden; /* Ẩn phần vượt ra ngoài khung */
-}
-/* Mỗi slide ảnh */
-.slide {
-    display: none; /* Ẩn tất cả slide, chỉ hiển thị 1 cái tại 1 thời điểm */
-    width: 100%; /* Chiếm toàn bộ chiều ngang */
-    animation: fade 1s ease-in-out; /* Hiệu ứng mờ dần khi chuyển ảnh */
-}
-/* Ảnh trong slide */
-.slide img {
-    width: 100%; /* Chiếm toàn bộ chiều ngang */
-    height: auto;/*700px;         /* Chiều cao mong muốn */
-    object-fit: cover; /*contain;   /* Giữ nguyên ảnh *//* Ảnh lấp đầy khung, có thể bị cắt mép*/ 
-    display: block; /* Loại bỏ khoảng trắng dưới ảnh */
-}
 .footer-container {
     display: flex;                  /* Kích hoạt Flexbox */
     justify-content: space-between;/* Căn đều các cột */
@@ -252,48 +233,52 @@ footer p a:hover {
   background-color: #95c4e6; /* Màu sáng hơn */
   color: rgb(211, 29, 29);   /* Màu chữ nổi bật */
 }
-/*----------SHOWROOM-------*/
-/* Đường phân cách nếu có */
-.bai-viet-2cot {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: stretch; /* 👈 giúp hai bên cao bằng nhau */
-}
-.cot-hinh {
-  flex: 1;
-  min-width: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.cot-hinh img {
-  max-width: 100%;
-  height: 100%;
-  max-height: 400px;
-  object-fit: cover;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
-.showroom {
-  flex: 1;
+/*----------ĐẶT LỊCH-------*/
+/* Trang đặt lịch */
+.dat-lich-page {
+  padding: 5px 0px;
   background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 10px 12px rgba(0,0,0,0.05);
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* 👈 căn giữa nội dung theo chiều dọc */
 }
-.showroom h2 {
-  color: #145a9f;
-}
-.showroom p {
-  font-size: 20px;
-  margin: 6px 0;
-}
-.showroom-title {
+.dat-lich-page h1 {
   text-align: center;
-  color: rgb(11, 41, 132);
+  font-size: 26px;
+  color: #145a9f;
+  margin-bottom: 5px;
 }
-/* Hiệu ứng mờ dần khi chuyển ảnh */
+.form-wrapper {
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 10px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+form label {
+  display: block;
+  margin-top: 5px;
+  color: #333;
+}
+form input,
+form select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+.btn-datlich {
+  margin-top: 25px;
+  background-color: #145a9f;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+}
+
 @keyframes fade {
     from {opacity: 0.4} /* Bắt đầu mờ */
     to {opacity: 1}     /* Kết thúc rõ nét */
@@ -320,9 +305,6 @@ footer p a:hover {
     margin-bottom: 15px;
     text-align: center;
     font-size: 18px;
-  }
-  .bai-viet-2cot {
-    flex-direction: column;
   }
 }
   </style>
@@ -372,9 +354,9 @@ footer p a:hover {
           <a href="{% url 'dichvu' %}">Dịch vụ</a>
           <ul class="submenu">
             <li><a href="{% url 'baoduong' %}">Bảo dưỡng định kỳ</a></li>
-            <li><a href="{% url 'baohanh' %}">Bảo hành</a></li>
-            <li><a href="{% url 'showroom' %}">Địa điểm bảo dưỡng</a></li>
-            <li><a href="{% url 'datlich' %}">Đặt lịch dịch vụ</a></li>
+            <li><a href="#">Bảo hành</a></li>
+            <li><a href="{% url 'datlich' %}">Địa điểm bảo dưỡng</a></li>
+            <li><a href="#">Đặt lịch dịch vụ</a></li>
             <li><a href="#">Chăm sóc khách hàng</a></li>
           </ul>
         </li>
@@ -392,29 +374,45 @@ footer p a:hover {
       <input type="text" name="q" placeholder="Tìm kiếm..." />
       <button type="submit">🔍</button>
     </form>
-  </nav>
-  <main class="showroom-page">
-    <section class="showroom-section">
-      <div class="chon-muc">
-        <a href="{% url 'showroom' %}">Đà Nẵng</a>
-        <a href="{% url 'showroom_qn' %}" class="active">Quảng Nam</a>
-      </div>
-      <h1 class="showroom-title">Showroom Trang Lê</h1>
-      <!-- Showroom Quảng Nam -->
-      <div class="bai-viet-2cot">
-        <div class="cot-hinh">
-          <img src="{% static 'images/TrangLee_6.jpg' %}" alt="Showroom Quảng Nam">
-        </div>
-        <div class="showroom">
-          <h2>Piaggio Trang Lee 2 – Quảng Nam</h2>
-          <p>📞 Hotline: 1800 255 898</p>
-          <p>☎️ Điện thoại bàn: 0235 3811168 / 0235 3811179</p>
-          <p>✉️ Email: <a href="mailto:contact@tienthu.vn">contact@tienthu.vn</a></p>
-          <p>📍 Địa chỉ: 136 Phan Bội Châu, TP. Tam Kỳ, Quảng Nam</p>
-        </div>
-      </div>
-    </section>
-  </main>        
+  </nav> 
+  <main class="dat-lich-page">
+    <h1>Đặt lịch dịch vụ</h1>
+  <div class="form-wrapper">
+    <form method="POST" action="{% url 'datlich' %}">
+      {% csrf_token %}
+        <label>Họ và tên *</label>
+        <input type="text" name="ho_ten" required>
+  
+        <label>Địa chỉ showroom *</label>
+        <select name="showroom" required>
+          <option value="">-- Chọn showroom --</option>
+          <option value="Đà Nẵng">Piaggio Trang Lê – Đà Nẵng</option>
+          <option value="Quảng Nam">Piaggio Trang Lê – Quảng Nam</option>
+        </select>
+        <label>Email</label>
+        <input type="email" name="email">
+        <label>Số điện thoại</label>
+        <input type="text" name="so_dien_thoai">
+        <label>Biển số xe *</label>
+        <input type="text" name="bien_so" required>
+        <label>Thời gian mong muốn *</label>
+        <input type="datetime-local" name="thoi_gian" required>
+        <label>Loại dịch vụ *</label>
+        <select name="loai_dich_vu" required>
+          <option value="">-- Chọn loại dịch vụ --</option>
+          <option value="Định kỳ">Bảo dưỡng định kỳ</option>
+          <option value="Sửa chữa">Sửa chữa / kiểm tra</option>
+        </select>
+        {% if error %}
+          <div class="alert">{{ error }}</div>
+        {% endif %}
+        {% if success %}
+          <div class="alert-success">✅ Đặt lịch thành công!</div>
+        {% endif %}
+        <button type="submit" class="btn-datlich">📅 Đặt lịch</button>
+      </form>
+    </div>
+  </main>  
   <footer>
     <div class="footer-container">
       <!-- Trái -->
@@ -443,9 +441,9 @@ footer p a:hover {
         <h4>Dịch vụ</h4>
         <ul>
           <li><a href="#">Bảo dưỡng định kỳ</a></li>
-          <li><a href="{% url 'baohanh' %}">Bảo hành</a></li>
+          <li><a href="#">Bảo hành</a></li>
           <li><a href="#">Địa điểm bảo dưỡng</a></li>
-          <li><a href="{% url 'datlich' %}">Đặt lịch dịch vụ</a></li>
+          <li><a href="#">Đặt lịch dịch vụ</a></li>
         </ul>
       </div>    
       <!-- Giới thiệu -->
@@ -454,7 +452,6 @@ footer p a:hover {
         <ul>
           <li><a href="{% url 'gioi_thieu' %}">Giới thiệu về công ty</a></li>
           <li><a href="#">Hoạt động & sự kiện</a></li>
-          <li><a href="{% url 'tuyen_dung' %}">Thông tin tuyển dụng</a></li>
           <li><a href="{% url 'lien_he' %}">Liên hệ</a></li>
         </ul>
       </div>
@@ -472,14 +469,13 @@ footer p a:hover {
         </a>   
       </div>
       <p>
-        <p>
-          &copy; 2025 TrangLee. 
-          Email: <a href="mailto:contact@tienthu.vn">contact@tienthu.vn</a> 
-          <span class="divider">|</span> 
-          <a href="http://www.vespa.com.vn/">Vespa Việt Nam</a> 
-          <span class="divider">|</span> 
-          <a href="http://www.piaggio.com.vn/">Piaggio Việt Nam</a>
-        </p>        
+        &copy; 2025 TrangLee. 
+        Email: <a href="mailto:contact@tienthu.vn">contact@tienthu.vn</a> 
+        <span class="divider">|</span> 
+        <a href="http://www.vespa.com.vn/">Vespa Việt Nam</a> 
+        <span class="divider">|</span> 
+        <a href="http://www.piaggio.com.vn/">Piaggio Việt Nam</a>
+      </p>   
     </div>
   </footer> 
   <script>

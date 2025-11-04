@@ -369,7 +369,7 @@ footer p a:hover {
           <a href="{% url 'dichvu' %}">Dịch vụ</a>
           <ul class="submenu">
             <li><a href="{% url 'baoduong' %}">Bảo dưỡng định kỳ</a></li>
-            <li><a href="#">Bảo hành</a></li>
+            <li><a href="{% url 'baohanh' %}s">Bảo hành</a></li>
             <li><a href="#">Địa điểm bảo dưỡng</a></li>
             <li><a href="#">Đặt lịch dịch vụ</a></li>
             <li><a href="#">Chăm sóc khách hàng</a></li>
@@ -463,10 +463,10 @@ footer p a:hover {
       <div class="footer-service">
         <h4>Dịch vụ</h4>
         <ul>
-          <li><a href="#">Bảo dưỡng định kỳ</a></li>
-          <li><a href="#">Bảo hành</a></li>
+          <li><a href="{% url 'baoduong' %}">Bảo dưỡng định kỳ</a></li>
+          <li><a href="{% url 'baohanh' %}">Bảo hành</a></li>
           <li><a href="#">Địa điểm bảo dưỡng</a></li>
-          <li><a href="#">Đặt lịch dịch vụ</a></li>
+          <li><a href="{% url 'datlich' %}">Đặt lịch dịch vụ</a></li>
         </ul>
       </div>    
       <!-- Giới thiệu -->

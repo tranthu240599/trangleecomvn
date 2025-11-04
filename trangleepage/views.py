@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import  GalleryImage
 from django.core.mail import send_mail
+from django.views.decorators.csrf import csrf_protect
 
 def home(request):
     images = GalleryImage.objects.all()
@@ -45,7 +46,26 @@ def dichvu(request):
     return render(request, 'dichvu.html')
 def baoduong(request):
     return render(request, 'baoduong.html')
+@csrf_protect
+def datlich(request):
+    if request.method == 'POST':
+        ho_ten = request.POST.get('ho_ten')
+        showroom = request.POST.get('showroom')
+        bien_so = request.POST.get('bien_so')
+        thoi_gian = request.POST.get('thoi_gian')
+        loai_dich_vu = request.POST.get('loai_dich_vu')
 
+        # Kiểm tra các trường bắt buộc
+        if not ho_ten or not showroom or not bien_so or not thoi_gian or not loai_dich_vu:
+            return render(request, 'datlich.html', {'error': 'Vui lòng điền đầy đủ thông tin bắt buộc.'})
+
+        # TODO: Lưu vào database hoặc xử lý theo yêu cầu
+
+        return render(request, 'datlich.html', {'success': True})
+
+    return render(request, 'datlich.html')
+def baohanh(request):
+    return render(request, 'baohanh.html')
 
 #-----------------------Thêm sdile ảnh--------------------
 def upload_image(request):
