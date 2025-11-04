@@ -16,6 +16,8 @@ urlpatterns = [
     path('cam-on/', views.cam_on, name='cam_on'),
     path('showroom/', views.showroom, name='showroom'),
     path('showroom-qn/', views.showroom_qn, name='showroom_qn'),
+    path('dichvu/', views.dichvu, name='dichvu'),
+    path('baoduong/', views.baoduong, name='baoduong'),
 
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

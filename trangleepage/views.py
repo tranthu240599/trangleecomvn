@@ -40,6 +40,11 @@ def showroom(request):
     return render(request, 'showroom.html', {'active_section': 'showroom'})
 def showroom_qn(request):
     return render(request, 'showroom-qn.html', {'active_section': 'showroom_qn'})
+#-------------DỊCH VỤ---------------
+def dichvu(request):
+    return render(request, 'dichvu.html')
+def baoduong(request):
+    return render(request, 'baoduong.html')
 
 
 #-----------------------Thêm sdile ảnh--------------------

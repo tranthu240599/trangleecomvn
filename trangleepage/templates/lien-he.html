@@ -454,9 +454,10 @@ form button:hover {
           </ul>
         </li>
         <li class="has-submenu">
-          <a href="#">Dịch vụ</a>
+          <a href="{% url 'dichvu' %}">Dịch vụ</a>
           <ul class="submenu">
-            <li><a href="#">Bảo dưỡng định kỳ</a></li>
+            <li><a href="{% url 'baoduong' %}">Bảo dưỡng định kỳ</a></li>
+            <li><a href="#">Bảo hành</a></li>
             <li><a href="{% url 'showroom' %}">Địa điểm bảo dưỡng</a></li>
             <li><a href="#">Đặt lịch dịch vụ</a></li>
             <li><a href="#">Chăm sóc khách hàng</a></li>
@@ -485,7 +486,6 @@ form button:hover {
   <section class="gioi-thieu-chinh">
     <div class="chon-muc">
         <a href="{% url 'gioi_thieu' %}">Giới thiệu về công ty</a>
-        <a href="{% url 'tuyen_dung' %}">Thông tin tuyển dụng</a>
         <a href="{% url 'lien_he' %}" class="active">Liên hệ</a>
       </div>           
   </section>
@@ -509,18 +509,18 @@ form button:hover {
     <div class="info-right">
       <h2>Thông tin liên hệ</h2>
       <div class="showroom">
-        <h3>Piaggio Trang Lee 1 (Đà Nẵng)</h3>
+        <h3>Piaggio Trang Lê 1 (Đà Nẵng)</h3>
         <p>Hotline: 1800 255 898</p>
         <p>Điện thoại bàn: 1800 255 898</p>
         <p>Email: <a href="contact@tienthu.vn">contact@tienthu.vn</a></p>
         <p>Địa chỉ : 13 - 15 Hùng Vương - Hải Châu - Đà Nẵng</p>
       </div>
       <div class="showroom">
-        <h3>Piaggio Trang Lee 2 (Quảng Nam)</h3>
+        <h3>Piaggio Trang Lê 2 (Quảng Nam)</h3>
         <p>Hotline: 1800 255 898</p>
         <p>Điện thoại bàn: 0235 3811168/0235 3811179</p>
         <p>Email: <a href="contact@tienthu.vn">contact@tienthu.vn</a></p>
-        <p>Địa chỉ : 136 Phan Bội Châu - TP. Tam Kỳ</p>
+        <p>Địa chỉ : 134 Phan Bội Châu - TP. Tam Kỳ</p>
       </div>
   </div>  
 </main>
@@ -552,6 +552,7 @@ form button:hover {
         <h4>Dịch vụ</h4>
         <ul>
           <li><a href="#">Bảo dưỡng định kỳ</a></li>
+          <li><a href="#">Bảo hành</a></li>
           <li><a href="#">Địa điểm bảo dưỡng</a></li>
           <li><a href="#">Đặt lịch dịch vụ</a></li>
         </ul>
