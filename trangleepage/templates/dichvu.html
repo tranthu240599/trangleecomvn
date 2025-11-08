@@ -128,25 +128,6 @@ nav a:hover { /* Hiệu ứng khi rê chuột vào liên kết */
 .search-form button:hover {
   background-color: #426f9c;
 }
-/* Khung chứa slideshow */
-.slideshow-container {
-    position: relative; /* Cho phép định vị các phần tử con */
-    width: 100%; /* Chiếm toàn bộ chiều ngang màn hình */
-    overflow: hidden; /* Ẩn phần vượt ra ngoài khung */
-}
-/* Mỗi slide ảnh */
-.slide {
-    display: none; /* Ẩn tất cả slide, chỉ hiển thị 1 cái tại 1 thời điểm */
-    width: 100%; /* Chiếm toàn bộ chiều ngang */
-    animation: fade 1s ease-in-out; /* Hiệu ứng mờ dần khi chuyển ảnh */
-}
-/* Ảnh trong slide */
-.slide img {
-    width: 100%; /* Chiếm toàn bộ chiều ngang */
-    height: auto;/*700px;         /* Chiều cao mong muốn */
-    object-fit: cover; /*contain;   /* Giữ nguyên ảnh *//* Ảnh lấp đầy khung, có thể bị cắt mép*/ 
-    display: block; /* Loại bỏ khoảng trắng dưới ảnh */
-}
 .footer-container {
     display: flex;                  /* Kích hoạt Flexbox */
     justify-content: space-between;/* Căn đều các cột */
@@ -257,7 +238,6 @@ footer p a:hover {
   width: 500px;
   height: 260px;
   object-fit: contain;
-
 }
 .dich-vu-item h2 {
   font-size: 20px;
@@ -278,7 +258,6 @@ footer p a:hover {
   font-weight: bold;
   font-size: 14px;
 }
-
 /* Responsive */
 @media (max-width: 768px) {
   .dich-vu-box,
@@ -286,7 +265,6 @@ footer p a:hover {
     flex-direction: column;
   }
 }
-
 /* Hiệu ứng mờ dần khi chuyển ảnh */
 @keyframes fade {
     from {opacity: 0.4} /* Bắt đầu mờ */
@@ -304,19 +282,6 @@ footer p a:hover {
   .footer-container {
     flex-direction: row; /* Giữ ngang */
     overflow-x: auto;   
-  }
-  .chon-muc {
-    flex-direction: column;
-    align-items: center;
-  }
-  .chon-muc a {
-    width: 90%;
-    margin-bottom: 15px;
-    text-align: center;
-    font-size: 18px;
-  }
-  .bai-viet-2cot {
-    flex-direction: column;
   }
   .dich-vu-grid {
     grid-template-columns: 1fr;
@@ -370,9 +335,9 @@ footer p a:hover {
           <ul class="submenu">
             <li><a href="{% url 'baoduong' %}">Bảo dưỡng định kỳ</a></li>
             <li><a href="{% url 'baohanh' %}s">Bảo hành</a></li>
-            <li><a href="#">Địa điểm bảo dưỡng</a></li>
-            <li><a href="#">Đặt lịch dịch vụ</a></li>
-            <li><a href="#">Chăm sóc khách hàng</a></li>
+            <li><a href="{% url 'showroom' %}">Địa điểm bảo dưỡng</a></li>
+            <li><a href="{% url 'datlich' %}">Đặt lịch dịch vụ</a></li>
+            <li><a href="{% url 'cskh' %}">Chăm sóc khách hàng</a></li>
           </ul>
         </li>
         <li class="has-submenu">
@@ -403,7 +368,7 @@ footer p a:hover {
         <img src="{% static 'images/baohanh.jpg' %}" alt="Bảo hành">
         <h2>Chính sách bảo hành</h2>
         <p>Cam kết bảo hành chính hãng theo tiêu chuẩn hãng.</p>
-        <a href="#" class="btn-xem">Xem chi tiết</a>
+        <a href="{% url 'baohanh' %}" class="btn-xem">Xem chi tiết</a>
       </div>
   
       <div class="dich-vu-item">
@@ -417,7 +382,7 @@ footer p a:hover {
         <img src="{% static 'images/datlich.jpg' %}" alt="Đặt lịch dịch vụ">
         <h2>Đặt lịch dịch vụ</h2>
         <p>Đặt lịch bảo dưỡng hoặc sửa chữa nhanh chóng, tiện lợi.</p>
-        <a href="#" class="btn-xem">Đặt lịch ngay</a>
+        <a href="{% url 'datlich' %}" class="btn-xem">Đặt lịch ngay</a>
       </div>
   
       <div class="dich-vu-item">
@@ -431,11 +396,10 @@ footer p a:hover {
         <img src="{% static 'images/cskh.png' %}" alt="Chăm sóc khách hàng">
         <h2>Chăm sóc khách hàng</h2>
         <p>Đội ngũ hỗ trợ tận tâm, sẵn sàng lắng nghe và phục vụ.</p>
-        <a href="#" class="btn-xem">Liên hệ CSKH</a>
+        <a href="{% url 'cskh' %}" class="btn-xem">Liên hệ CSKH</a>
       </div>
     </section>
   </main>
-  
   <footer>
     <div class="footer-container">
       <!-- Trái -->
@@ -465,7 +429,7 @@ footer p a:hover {
         <ul>
           <li><a href="{% url 'baoduong' %}">Bảo dưỡng định kỳ</a></li>
           <li><a href="{% url 'baohanh' %}">Bảo hành</a></li>
-          <li><a href="#">Địa điểm bảo dưỡng</a></li>
+          <li><a href="{% url 'showroom' %}">Địa điểm bảo dưỡng</a></li>
           <li><a href="{% url 'datlich' %}">Đặt lịch dịch vụ</a></li>
         </ul>
       </div>    
@@ -501,20 +465,6 @@ footer p a:hover {
           <a href="http://www.piaggio.com.vn/">Piaggio Việt Nam</a>
         </p>        
     </div>
-  </footer> 
-  <script>
-    let slideIndex = 0;
-    showSlides();
-    function showSlides() {
-      let slides = document.getElementsByClassName("slide");
-      for (let i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-      }
-      slideIndex++;
-      if (slideIndex > slides.length) { slideIndex = 1 }
-      slides[slideIndex - 1].style.display = "block";
-      setTimeout(showSlides, 3000); // Chuyển ảnh sau mỗi 3 giây
-    }
-  </script>  
+  </footer>   
 </body>
 </html>

@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<title>Showroom Trang Lê</title>
+<title>ĐẶT LỊCH DV</title>
   <style>
     /* Thiết lập cơ bản cho toàn bộ trang */
 /* Phần đầu trang */
@@ -215,24 +215,6 @@ footer p a:hover {
   margin: 10px 20px;
   color: #2b4822;
 }
-/***** GIỚI THIỆU *****/
-/* Khối chứa các mục chọn bên dưới */
-.chon-muc {
-  display: flex;            /* Hiển thị các mục theo hàng ngang */
-  justify-content: space-around; /* Cách đều các mục */
-  font-size: 20px;          /* Cỡ chữ lớn cho tiêu đề mục */
-  font-weight: bold;        /* Chữ đậm */
-  margin: 10px auto;        /* Canh giữa và cách trên dưới 40px */
-}
-/* Hiệu ứng khi rê chuột vào box */
-.chon-muc a:hover {
-  background-color: #95c4e6;
-  color: rgb(211, 29, 29);
-}
-.chon-muc a.active {
-  background-color: #95c4e6; /* Màu sáng hơn */
-  color: rgb(211, 29, 29);   /* Màu chữ nổi bật */
-}
 /*----------ĐẶT LỊCH-------*/
 /* Trang đặt lịch */
 .dat-lich-page {
@@ -278,7 +260,6 @@ form select {
   cursor: pointer;
   width: 100%;
 }
-
 @keyframes fade {
     from {opacity: 0.4} /* Bắt đầu mờ */
     to {opacity: 1}     /* Kết thúc rõ nét */
@@ -295,16 +276,6 @@ form select {
   .footer-container {
     flex-direction: row; /* Giữ ngang */
     overflow-x: auto;   
-  }
-  .chon-muc {
-    flex-direction: column;
-    align-items: center;
-  }
-  .chon-muc a {
-    width: 90%;
-    margin-bottom: 15px;
-    text-align: center;
-    font-size: 18px;
   }
 }
   </style>
@@ -354,10 +325,11 @@ form select {
           <a href="{% url 'dichvu' %}">Dịch vụ</a>
           <ul class="submenu">
             <li><a href="{% url 'baoduong' %}">Bảo dưỡng định kỳ</a></li>
-            <li><a href="#">Bảo hành</a></li>
-            <li><a href="{% url 'datlich' %}">Địa điểm bảo dưỡng</a></li>
-            <li><a href="#">Đặt lịch dịch vụ</a></li>
-            <li><a href="#">Chăm sóc khách hàng</a></li>
+            <li><a href="{% url 'baohanh' %}">Bảo hành</a></li>
+            <li><a href="{% url 'showroom' %}">Địa điểm bảo dưỡng</a></li>
+            <li><a href="{% url 'datlich' %}">Đặt lịch dịch vụ</a></li>
+            <li><a href="">Hỏi & Đáp</a></li>
+            <li><a href="{% url 'cskh' %}">Chăm sóc khách hàng</a></li>
           </ul>
         </li>
         <li class="has-submenu">
@@ -440,10 +412,10 @@ form select {
       <div class="footer-service">
         <h4>Dịch vụ</h4>
         <ul>
-          <li><a href="#">Bảo dưỡng định kỳ</a></li>
-          <li><a href="#">Bảo hành</a></li>
-          <li><a href="#">Địa điểm bảo dưỡng</a></li>
-          <li><a href="#">Đặt lịch dịch vụ</a></li>
+          <li><a href="{% url 'baoduong' %}">Bảo dưỡng định kỳ</a></li>
+          <li><a href="{% url 'baohanh' %}">Bảo hành</a></li>
+          <li><a href="{% url 'showroom' %}">Địa điểm bảo dưỡng</a></li>
+          <li><a href="{% url 'datlich' %}">Đặt lịch dịch vụ</a></li>
         </ul>
       </div>    
       <!-- Giới thiệu -->
@@ -478,19 +450,5 @@ form select {
       </p>   
     </div>
   </footer> 
-  <script>
-    let slideIndex = 0;
-    showSlides();
-    function showSlides() {
-      let slides = document.getElementsByClassName("slide");
-      for (let i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-      }
-      slideIndex++;
-      if (slideIndex > slides.length) { slideIndex = 1 }
-      slides[slideIndex - 1].style.display = "block";
-      setTimeout(showSlides, 3000); // Chuyển ảnh sau mỗi 3 giây
-    }
-  </script>  
 </body>
 </html>

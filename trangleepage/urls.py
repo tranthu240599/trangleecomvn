@@ -19,7 +19,11 @@ urlpatterns = [
     path('dichvu/', views.dichvu, name='dichvu'),
     path('baoduong/', views.baoduong, name='baoduong'),
     path('datlich/', views.datlich, name='datlich'),
-    path('baohanh/', views.baohanh, name='baohanh')
+    path('baohanh/', views.baohanh, name='baohanh'),
+    path('cskh/', views.cskh, name='cskh'),
+    path('hoidap/', views.hoidap, name='hoidap'),
+    path('san-pham/', views.san_pham, name='san_pham'),
+    path('quantri/', views.trang_quan_tri, name='trang_quan_tri'),
 
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

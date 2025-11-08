@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<title>Showroom Trang Lê</title>
+<title>BẢO HÀNH</title>
   <style>
     /* Thiết lập cơ bản cho toàn bộ trang */
 /* Phần đầu trang */
@@ -128,25 +128,6 @@ nav a:hover { /* Hiệu ứng khi rê chuột vào liên kết */
 .search-form button:hover {
   background-color: #426f9c;
 }
-/* Khung chứa slideshow */
-.slideshow-container {
-    position: relative; /* Cho phép định vị các phần tử con */
-    width: 100%; /* Chiếm toàn bộ chiều ngang màn hình */
-    overflow: hidden; /* Ẩn phần vượt ra ngoài khung */
-}
-/* Mỗi slide ảnh */
-.slide {
-    display: none; /* Ẩn tất cả slide, chỉ hiển thị 1 cái tại 1 thời điểm */
-    width: 100%; /* Chiếm toàn bộ chiều ngang */
-    animation: fade 1s ease-in-out; /* Hiệu ứng mờ dần khi chuyển ảnh */
-}
-/* Ảnh trong slide */
-.slide img {
-    width: 100%; /* Chiếm toàn bộ chiều ngang */
-    height: auto;/*700px;         /* Chiều cao mong muốn */
-    object-fit: cover; /*contain;   /* Giữ nguyên ảnh *//* Ảnh lấp đầy khung, có thể bị cắt mép*/ 
-    display: block; /* Loại bỏ khoảng trắng dưới ảnh */
-}
 .footer-container {
     display: flex;                  /* Kích hoạt Flexbox */
     justify-content: space-between;/* Căn đều các cột */
@@ -235,23 +216,6 @@ footer p a:hover {
   color: #2b4822;
 }
 /***** GIỚI THIỆU *****/
-/* Khối chứa các mục chọn bên dưới */
-.chon-muc {
-  display: flex;            /* Hiển thị các mục theo hàng ngang */
-  justify-content: space-around; /* Cách đều các mục */
-  font-size: 20px;          /* Cỡ chữ lớn cho tiêu đề mục */
-  font-weight: bold;        /* Chữ đậm */
-  margin: 10px auto;        /* Canh giữa và cách trên dưới 40px */
-}
-/* Hiệu ứng khi rê chuột vào box */
-.chon-muc a:hover {
-  background-color: #95c4e6;
-  color: rgb(211, 29, 29);
-}
-.chon-muc a.active {
-  background-color: #95c4e6; /* Màu sáng hơn */
-  color: rgb(211, 29, 29);   /* Màu chữ nổi bật */
-}
 /*------------BẢO HÀNH----------*/
 .banner {
   width: 100%;              /* Chiếm toàn bộ chiều ngang màn hình */
@@ -266,69 +230,53 @@ footer p a:hover {
 .bao-hanh-page {
   max-width: 800px;
   margin: 0 auto;
-  padding: 40px 20px;
-  font-family: 'Poppins', sans-serif;
+  padding: 5px 10px;
   background-color: #f9f9f9;
 }
-
 .page-title {
   text-align: center;
   font-size: 30px;
-  color: #145a9f;
-  margin-bottom: 20px;
+  color: rgb(182, 23, 23);
+  margin-bottom: 0px;
 }
-
 .intro {
   text-align: center;
   font-size: 16px;
   color: #333;
-  margin-bottom: 30px;
 }
-
 .bao-hanh-chinh-sach h2 {
   color: #145a9f;
-  margin-top: 25px;
-  font-size: 20px;
+  font-size: 16px;
 }
-
 .bao-hanh-chinh-sach ul {
   list-style: none;
   padding-left: 0;
-  line-height: 1.8;
+  line-height: 1.5;
   font-size: 14px;
   color: #444;
 }
-
-.tra-cuu-bao-hanh {
-  margin-top: 40px;
-  text-align: center;
+h3 {
+  margin-top: 5px;
+  margin-bottom: 5px; /* 👈 giảm khoảng cách dưới */
+  font-size: 16px;
 }
-
-.tra-cuu-bao-hanh h2 {
-  font-size: 20px;
-  color: #145a9f;
-  margin-bottom: 15px;
-}
-
-.tra-cuu-bao-hanh input {
-  padding: 10px;
-  width: 300px;
+.luu-y {
+  margin-top: 10px; /* 👈 tạo khoảng cách với danh sách phía trên */
+  padding: 10px 15px;
+  background-color: #fffbe6;
+  border-left: 4px solid #f0c000;
   border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 15px;
 }
-
-.tra-cuu-bao-hanh button {
-  padding: 10px 16px;
-  background-color: #145a9f;
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  font-size: 15px;
-  cursor: pointer;
-  margin-left: 10px;
+.luu-y h3 {
+  margin: 0 0 5px 0;
+  color: #eb1409;
+  font-size: 16px;
 }
-
+.luu-y p {
+  margin: 0;
+  font-size: 15px;
+  color: black;
+}
 /* Hiệu ứng mờ dần khi chuyển ảnh */
 @keyframes fade {
     from {opacity: 0.4} /* Bắt đầu mờ */
@@ -346,16 +294,6 @@ footer p a:hover {
   .footer-container {
     flex-direction: row; /* Giữ ngang */
     overflow-x: auto;   
-  }
-  .chon-muc {
-    flex-direction: column;
-    align-items: center;
-  }
-  .chon-muc a {
-    width: 90%;
-    margin-bottom: 15px;
-    text-align: center;
-    font-size: 18px;
   }
 }
   </style>
@@ -405,10 +343,10 @@ footer p a:hover {
           <a href="{% url 'dichvu' %}">Dịch vụ</a>
           <ul class="submenu">
             <li><a href="{% url 'baoduong' %}">Bảo dưỡng định kỳ</a></li>
-            <li><a href="#">Bảo hành</a></li>
-            <li><a href="{% url 'datlich' %}">Địa điểm bảo dưỡng</a></li>
-            <li><a href="#">Đặt lịch dịch vụ</a></li>
-            <li><a href="#">Chăm sóc khách hàng</a></li>
+            <li><a href="{% url 'baohanh' %}">Bảo hành</a></li>
+            <li><a href="{% url 'showroom' %}">Địa điểm bảo dưỡng</a></li>
+            <li><a href="{% url 'datlich' %}">Đặt lịch dịch vụ</a></li>
+            <li><a href="{% url 'cskh' %}">Chăm sóc khách hàng</a></li>
           </ul>
         </li>
         <li class="has-submenu">
@@ -435,44 +373,47 @@ footer p a:hover {
           Trang Lê cam kết bảo hành chính hãng cho tất cả các dòng xe Piaggio, Vespa theo tiêu chuẩn của nhà sản xuất.
         </p>
         <section class="bao-hanh-chinh-sach">
-          <h2>1.Chế độ bảo hành</h2>
+          <h2>1. CHẾ ĐỘ BẢO HÀNH</h2>
           <ul>
-            <li>✔️ Khi quý khách sử dụng sản phẩm của Piaggio sẽ được hưởng những dịch vụ như sau:</li>
-            <li> - * Dịch vụ sau bán hàng đầy đủ tại các trung tâm chính thức của Piaggio.</li>
-            <li> - * Bảo hành 3 năm hoặc 30.000 km đối với sản phẩm Vespa sản xuất tại Việt Nam và các sản phẩm do Piaggio Việt Nam nhập khẩu.</li>
-            <li> - * Phụ tùng đạt tiêu chuẩn chất lượng Piaggio sẽ đáp ứng được các yêu cầu của quý khách.</li>
-            <li> - Công ty TNHH Piaggio Việt Nam sẽ thực hiện chế độ bảo hành bằng việc sửa chữa hoặc 
+            <h3>✔️ Khi quý khách sử dụng sản phẩm của Piaggio sẽ được hưởng những dịch vụ như sau:</h3>
+            <li> * Dịch vụ sau bán hàng đầy đủ tại các trung tâm chính thức của Piaggio.</li>
+            <li> * Bảo hành 3 năm hoặc 30.000 km đối với sản phẩm Vespa sản xuất tại Việt Nam và các sản phẩm do Piaggio Việt Nam nhập khẩu.</li>
+            <li> * Phụ tùng đạt tiêu chuẩn chất lượng Piaggio sẽ đáp ứng được các yêu cầu của quý khách.</li>
+            <li> * Công ty TNHH Piaggio Việt Nam sẽ thực hiện chế độ bảo hành bằng việc sửa chữa hoặc 
                 thay thế chi tiết bị lỗi trong quá trình sản xuất hoặc lắp ráp với phụ tùng chính hiệu của Piaggio</li>
-            <li>✔️ Quý khách mua xe sẽ có một sổ bảo hành có nêu rõ các quyền lợi và nghĩa vụ của hai bên, cũng như lịch bảo dưỡng xe. 
-                Quý khách sẽ đem xe đến bảo hành tại các trạm bảo hành có địa chỉ trên sổ bảo hành.</li>
-            <li>✔️ Quý khách sẽ đem xe đến bảo hành tại các trạm bảo hành có địa chỉ trên sổ bảo hành.</li>
-            <li>✔️ Đặc biệt quý khách sẽ được hưởng những dịch vụ vượt trội mà chỉ có Piaggio đem lại cho khách hàng, đó là:</li>
-            <li> - Dịch vụ sửa ngoài: Các trung tâm bảo hành Piaggio sẽ cho nhân viên của mình phục vụ khách hàng khi xe của quý khách 
+            <h3>✔️ Quý khách mua xe sẽ có một sổ bảo hành có nêu rõ các quyền lợi và nghĩa vụ của hai bên, cũng như lịch bảo dưỡng xe. 
+                Quý khách sẽ đem xe đến bảo hành tại các trạm bảo hành có địa chỉ trên sổ bảo hành.</h3>
+            <h3>✔️ Quý khách sẽ đem xe đến bảo hành tại các trạm bảo hành có địa chỉ trên sổ bảo hành.</h3>
+            <h3>✔️ Đặc biệt quý khách sẽ được hưởng những dịch vụ vượt trội mà chỉ có Piaggio đem lại cho khách hàng, đó là:</h3>
+            <li> * Dịch vụ sửa ngoài: Các trung tâm bảo hành Piaggio sẽ cho nhân viên của mình phục vụ khách hàng khi xe của quý khách 
                 bị sự cố trên đường hoặc qúy khách có nhu cầu sửa chữa tại nhà. Quý khách sẽ phải trả thêm chi phí phục vụ ngoài trung tâm.</li>
-            <li> - Mỗi xe của qúy khách đều được lập một phiếu theo dõi sửa chữa, bảo dưỡng kể từ khi mua xe.
+            <li> * Mỗi xe của qúy khách đều được lập một phiếu theo dõi sửa chữa, bảo dưỡng kể từ khi mua xe.
                 Điều này sẽ giúp theo dõi được tình trạng kỹ thuật của xe cung như việc bảo dưỡng định kỳ của quý khách hàng.</li>
           </ul>
-      
           <h2>2. QUY ĐỊNH VỀ BẢO HÀNH</h2>
           <ul>
-            <li>❌ Xe Piaggio sẽ không được hưởng quy chế bảo hành nếu:</li>
-            <li>❌ Tự ý thay đổi kết cấu, độ xe</li>
-            <li>❌ Không bảo dưỡng định kỳ theo khuyến nghị</li>
+            <h3>❌ Xe Piaggio sẽ không được hưởng quy chế bảo hành nếu:</h3>
+            <li> * Không xuất trình sổ bảo hành khi mang xe đến các Trung tâm bảo hành của Piaggio.</li>
+            <li> * Không được bảo dưỡng bình thường theo quy định của Trung tâm bảo hành Piaggio. </li>
+            <li> * Xe Scooter Piaggio bị hư hỏng do không sử dụng đúng cách, cẩu thả, 
+                không phù hợp với những hướng dẫn trong Sách hướng dẫn sử dụng, do tai nạn.</li>
+            <li> * Đã sửa chữa, thay thế phụ tùng ở nơi khác, không do Trung tâm bảo hành Piaggio thực hiện.</li>
+            <li>* Trong thời hạn 6 tháng hoặc 6.000 km đầu tiên không đưa xe đến Trung tâm bảo hành Piaggio để kiểm tra và bảo dưỡng đúng định kỳ</li>
+            <li> * Những phụ tùng bị hao mòn, biến chất hay hư hỏng bình thường theo thời gian sử dụng như: Dầu máy, dầu hộp số, dầu phanh, nước làm mát,
+                 lọc dầu, lọc xăng, lọc không khí, dây curoa, dây ga, dây đồng hồ tốc độ, dây phanh, lốp xe, má phanh, chổi than động cơ điện khởi động, bugi, bóng đèn, cầu chì…</li>
+            <li> * Các trường hợp phai màu tự nhiên của các bề mặt xi mạ, sơn hoặc các chi tiết bị ăn mòn do tác động của môi trường (mưa axit, hóa chất,…)</li>
           </ul>
           <h2>3. TRÁCH NHIỆM CỦA KHÁCH HÀNG.</h2>
           <ul>
-            <li>🔧 Xe còn trong thời hạn bảo hành</li>
-            </ul>
+            <li> * Đọc kỹ các quy định bảo hành do Trung tâm bảo hành Piaggio đề ra.</li>
+            <li> * Thực hiện bảo dưỡng định kỳ đầy đủ và đúng hạn.</li>
+            <li> * Xuất trình sổ bảo hành khi đưa xe đến các Trung tâm bảo hành Piaggio.</li>
+            <div class="luu-y">
+                <h3>✔️ Lưu ý:</h3>
+                <p>* Hãng Piaggio có quyền thay đổi thiết kế hay đặc tính kỹ thuật của xe mà không cần thông báo trước.</p>
+                <p>* Căn cứ vào các quy định về bảo hành Trung tâm bảo hành Piaggio có quyền chấp nhận hay không chấp nhận các khiếu nại bảo hành.</p>
+              </div>
         </section>
-      <!--
-        <section class="tra-cuu-bao-hanh">
-          <h2>Tra cứu bảo hành</h2>
-          <form method="GET" action="/tra-cuu-bao-hanh">
-            <input type="text" name="ma_bao_hanh" placeholder="Nhập mã bảo hành hoặc biển số xe">
-            <button type="submit">🔍 Tra cứu</button>
-          </form>
-        </section>
-        -->
       </main>
   <footer>
     <div class="footer-container">
@@ -501,9 +442,9 @@ footer p a:hover {
       <div class="footer-service">
         <h4>Dịch vụ</h4>
         <ul>
-          <li><a href="#">Bảo dưỡng định kỳ</a></li>
-          <li><a href="#">Bảo hành</a></li>
-          <li><a href="#">Địa điểm bảo dưỡng</a></li>
+          <li><a href="{% url 'baoduong' %}">Bảo dưỡng định kỳ</a></li>
+          <li><a href="{% url 'baohanh' %}">Bảo hành</a></li>
+          <li><a href="{% url 'showroom' %}">Địa điểm bảo dưỡng</a></li>
           <li><a href="{% url 'datlich' %}">Đặt lịch dịch vụ</a></li>
         </ul>
       </div>    
@@ -513,7 +454,6 @@ footer p a:hover {
         <ul>
           <li><a href="{% url 'gioi_thieu' %}">Giới thiệu về công ty</a></li>
           <li><a href="#">Hoạt động & sự kiện</a></li>
-          <li><a href="{% url 'tuyen_dung' %}">Thông tin tuyển dụng</a></li>
           <li><a href="{% url 'lien_he' %}">Liên hệ</a></li>
         </ul>
       </div>
@@ -540,20 +480,6 @@ footer p a:hover {
           <a href="http://www.piaggio.com.vn/">Piaggio Việt Nam</a>
         </p>        
     </div>
-  </footer> 
-  <script>
-    let slideIndex = 0;
-    showSlides();
-    function showSlides() {
-      let slides = document.getElementsByClassName("slide");
-      for (let i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-      }
-      slideIndex++;
-      if (slideIndex > slides.length) { slideIndex = 1 }
-      slides[slideIndex - 1].style.display = "block";
-      setTimeout(showSlides, 3000); // Chuyển ảnh sau mỗi 3 giây
-    }
-  </script>  
+  </footer>   
 </body>
 </html>

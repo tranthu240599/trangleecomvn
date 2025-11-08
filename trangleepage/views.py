@@ -1,11 +1,42 @@
 from django.shortcuts import render, redirect
-from .models import  GalleryImage
+from .models import  GalleryImage,SanPham,TrangNoiDung, TrangNoiDungForm
 from django.core.mail import send_mail
-from django.views.decorators.csrf import csrf_protect
+from django.views.decorators.csrf import csrf_protect, csrf_exempt
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import get_object_or_404, redirect
+
+def trang_quan_tri(request):
+    danh_sach_trang = TrangNoiDung.objects.all()
+    san_pham = SanPham.objects.all()
+    return render(request, 'quan_tri.html', {
+        'danh_sach_trang': danh_sach_trang,
+        'san_pham': san_pham
+    })
+
+@login_required
+def sua_trang(request, id):
+    trang = get_object_or_404(TrangNoiDung, id=id)
+    if request.method == 'POST':
+        form = TrangNoiDungForm(request.POST, request.FILES, instance=trang)
+        if form.is_valid():
+            form.save()
+            return redirect('trang_quan_tri')
+    else:
+        form = TrangNoiDungForm(instance=trang)
+    return render(request, 'sua_trang.html', {'form': form})
+
 
 def home(request):
-    images = GalleryImage.objects.all()
-    return render(request, 'home.html', {'images': images})
+    images = GalleryImage.objects.all()  # ảnh slideshow hoặc gallery
+    san_pham_noi_bat = SanPham.objects.filter(noi_bat=True)[:6]  # sản phẩm nổi bật
+    return render(request, 'home.html', {
+        'images': images,
+        'san_pham_noi_bat': san_pham_noi_bat
+    })
+#-----------SẢN PHẨM-----------
+def san_pham(request):
+    san_pham = SanPham.objects.all()
+    return render(request, 'sanpham.html', {'san_pham': san_pham})
 
 #-----------GIỚI THIỆU--------------------
 def gioi_thieu(request):
@@ -66,6 +97,11 @@ def datlich(request):
     return render(request, 'datlich.html')
 def baohanh(request):
     return render(request, 'baohanh.html')
+def cskh(request):
+    return render(request, 'cskh.html')
+@csrf_exempt
+def hoidap(request):
+    return render(request, 'hoidap.html')
 
 #-----------------------Thêm sdile ảnh--------------------
 def upload_image(request):

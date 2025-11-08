@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Trang quản trị</title>
+</head>
+<body>
+  <h1>🎛️ Quản trị nội dung website</h1>
+
+  <section>
+    <h2>📄 Các trang nội dung</h2>
+    {% if danh_sach_trang %}
+      {% for trang in danh_sach_trang %}
+        <li>{{ trang.ten_trang }} – <a href="#">Chỉnh sửa</a></li>
+      {% endfor %}
+    {% else %}
+      <li>Chưa có nội dung nào.</li>
+    {% endif %}
+  </section>
+
+  <section>
+    <h2>🛍️ Sản phẩm</h2>
+    {% if san_pham %}
+      {% for sp in san_pham %}
+        <li>{{ sp.ten }} – <a href="#">Chỉnh sửa</a></li>
+      {% endfor %}
+    {% else %}
+      <li>Chưa có sản phẩm nào.</li>
+    {% endif %}
+  </section>
+</body>
+</html>

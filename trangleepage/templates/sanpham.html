@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<title>Trang Chủ</title>
+<title>CSKH</title>
   <style>
     /* Thiết lập cơ bản cho toàn bộ trang */
 /* Phần đầu trang */
@@ -129,25 +129,6 @@ nav a:hover { /* Hiệu ứng khi rê chuột vào liên kết */
 .search-form button:hover {
   background-color: #426f9c;
 }
-/* Khung chứa slideshow */
-.slideshow-container {
-    position: relative; /* Cho phép định vị các phần tử con */
-    width: 100%; /* Chiếm toàn bộ chiều ngang màn hình */
-    overflow: hidden; /* Ẩn phần vượt ra ngoài khung */
-}
-/* Mỗi slide ảnh */
-.slide {
-    display: none; /* Ẩn tất cả slide, chỉ hiển thị 1 cái tại 1 thời điểm */
-    width: 100%; /* Chiếm toàn bộ chiều ngang */
-    animation: fade 1s ease-in-out; /* Hiệu ứng mờ dần khi chuyển ảnh */
-}
-/* Ảnh trong slide */
-.slide img {
-    width: 100%; /* Chiếm toàn bộ chiều ngang */
-    height: auto;/*700px;         /* Chiều cao mong muốn */
-    object-fit: cover; /*contain;   /* Giữ nguyên ảnh *//* Ảnh lấp đầy khung, có thể bị cắt mép*/ 
-    display: block; /* Loại bỏ khoảng trắng dưới ảnh */
-}
 .footer-container {
     display: flex;                  /* Kích hoạt Flexbox */
     justify-content: space-between;/* Căn đều các cột */
@@ -235,6 +216,70 @@ footer p a:hover {
   margin: 10px 20px;
   color: #2b4822;
 }
+/***** SẢN PHẨM *****/
+.san-pham-page {
+  padding: 40px 20px;
+  margin-bottom: 80px; /* 👈 tạo khoảng cách rõ ràng với footer */
+  box-sizing: border-box;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 28px;
+  color: #145a9f;
+  margin-bottom: 30px;
+}
+
+.san-pham-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  overflow: hidden; /* 👈 tránh tràn layout */
+}
+
+.san-pham-item {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+.san-pham-item img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.san-pham-item h3 {
+  font-size: 18px;
+  color: #145a9f;
+  margin-bottom: 8px;
+}
+
+.san-pham-item p {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+.san-pham-item .gia {
+  font-weight: bold;
+  color: #d60000;
+}
+
+.btn-xem {
+  display: inline-block;
+  background-color: #145a9f;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+}
 /* Hiệu ứng mờ dần khi chuyển ảnh */
 @keyframes fade {
     from {opacity: 0.4} /* Bắt đầu mờ */
@@ -246,12 +291,12 @@ footer p a:hover {
     flex-direction: column; /* Menu xếp dọc thay vì ngang */
     align-items: center;    /* Căn giữa các mục */
     }
-    .search-form {
+  .search-form {
     margin-top: 10px;
   }
-    .footer-container {
+  .footer-container {
     flex-direction: row; /* Giữ ngang */
-    overflow-x: auto;
+    overflow-x: auto;   
   }
 }
   </style>
@@ -275,7 +320,7 @@ footer p a:hover {
   <nav>
     <nav class="nav-bar">
       <ul class="nav-menu">
-        <li><a href="#">Trang chủ</a></li>    
+        <li><a href="{% url 'home' %}">Trang chủ</a></li>    
         <li class="has-submenu">
           <a href="{% url 'gioi_thieu' %}">Giới thiệu</a>
           <ul class="submenu">
@@ -284,7 +329,7 @@ footer p a:hover {
           </ul>
         </li>   
         <li class="has-submenu">
-          <a href="{% url 'san_pham' %}">Sản phẩm</a>
+          <a href="#">Sản phẩm</a>
           <ul class="submenu">
             <li><a href="#">Piaggio</a></li>
             <li><a href="#">Vespa</a></li>
@@ -302,9 +347,9 @@ footer p a:hover {
           <ul class="submenu">
             <li><a href="{% url 'baoduong' %}">Bảo dưỡng định kỳ</a></li>
             <li><a href="{% url 'baohanh' %}">Bảo hành</a></li>
-            <li><a href="">Địa điểm bảo dưỡng</a></li>
+            <li><a href="{% url 'showroom' %}">Địa điểm bảo dưỡng</a></li>
             <li><a href="{% url 'datlich' %}">Đặt lịch dịch vụ</a></li>
-            <li><a href="{% url 'hoidap' %}">Hỏi & Đáp</a></li>
+            <li><a href="">Hỏi & Đáp</a></li>
             <li><a href="{% url 'cskh' %}">Chăm sóc khách hàng</a></li>
           </ul>
         </li>
@@ -323,31 +368,20 @@ footer p a:hover {
       <button type="submit">🔍</button>
     </form>
   </nav>
-  <main>
-        <!--Thêm sdile ảnh-->
-        <div class="slideshow-container">
-            {% for img in images %}
-              <div class="slide">
-                <img src="{{ img.image.url }}" alt="Ảnh hoạt động">
-              </div>
-            {% endfor %}
-          </div>  
-        <!-- Sản phẩm nổi bật -->
-          <section class="san-pham-noi-bat">
-            <h2>Sản phẩm nổi bật</h2>
-            <div class="san-pham-grid">
-              {% for sp in san_pham_noi_bat %}
-                <div class="san-pham-item">
-                  <img src="{{ sp.image.url }}" alt="{{ sp.ten }}">
-                  <h3>{{ sp.ten }}</h3>
-                  <p>{{ sp.mo_ta|truncatewords:20 }}</p>
-                  <p class="gia">{{ sp.gia|intcomma }}₫</p>
-                  <a href="{% url 'san_pham' sp.id %}" class="btn-xem">Xem chi tiết</a>
-                </div>
-              {% endfor %}
-            </div>
-          </section>                        
-  </main>
+  <main class="san-pham-page">
+    <h1 class="page-title">Sản phẩm Trang Lê</h1>
+    <div class="san-pham-grid">
+      {% for sp in san_pham %}
+        <div class="san-pham-item">
+          <img src="{{ sp.image.url }}" alt="{{ sp.ten }}">
+          <h3>{{ sp.ten }}</h3>
+          <p>{{ sp.mo_ta|truncatewords:20 }}</p>
+          <p class="gia">{{ sp.gia|intcomma }}₫</p>
+          <a href="{% url 'san_pham' sp.id %}" class="btn-xem">Xem chi tiết</a>
+        </div>
+      {% endfor %}
+    </div>
+  </main>  
   <footer>
     <div class="footer-container">
       <!-- Trái -->
@@ -404,13 +438,14 @@ footer p a:hover {
         </a>   
       </div>
       <p>
-        &copy; 2025 TrangLee. 
-        Email: <a href="mailto:contact@tienthu.vn">contact@tienthu.vn</a> 
-        <span class="divider">|</span> 
-        <a href="http://www.vespa.com.vn/">Vespa Việt Nam</a> 
-        <span class="divider">|</span> 
-        <a href="http://www.piaggio.com.vn/">Piaggio Việt Nam</a>
-      </p>   
+        <p>
+          &copy; 2025 TrangLee. 
+          Email: <a href="mailto:contact@tienthu.vn">contact@tienthu.vn</a> 
+          <span class="divider">|</span> 
+          <a href="http://www.vespa.com.vn/">Vespa Việt Nam</a> 
+          <span class="divider">|</span> 
+          <a href="http://www.piaggio.com.vn/">Piaggio Việt Nam</a>
+        </p>        
     </div>
   </footer> 
   <script>

@@ -128,25 +128,6 @@ nav a:hover { /* Hiệu ứng khi rê chuột vào liên kết */
 .search-form button:hover {
   background-color: #426f9c;
 }
-/* Khung chứa slideshow */
-.slideshow-container {
-    position: relative; /* Cho phép định vị các phần tử con */
-    width: 100%; /* Chiếm toàn bộ chiều ngang màn hình */
-    overflow: hidden; /* Ẩn phần vượt ra ngoài khung */
-}
-/* Mỗi slide ảnh */
-.slide {
-    display: none; /* Ẩn tất cả slide, chỉ hiển thị 1 cái tại 1 thời điểm */
-    width: 100%; /* Chiếm toàn bộ chiều ngang */
-    animation: fade 1s ease-in-out; /* Hiệu ứng mờ dần khi chuyển ảnh */
-}
-/* Ảnh trong slide */
-.slide img {
-    width: 100%; /* Chiếm toàn bộ chiều ngang */
-    height: auto;/*700px;         /* Chiều cao mong muốn */
-    object-fit: cover; /*contain;   /* Giữ nguyên ảnh *//* Ảnh lấp đầy khung, có thể bị cắt mép*/ 
-    display: block; /* Loại bỏ khoảng trắng dưới ảnh */
-}
 .footer-container {
     display: flex;                  /* Kích hoạt Flexbox */
     justify-content: space-between;/* Căn đều các cột */
@@ -374,8 +355,9 @@ footer p a:hover {
             <li><a href="{% url 'baoduong' %}">Bảo dưỡng định kỳ</a></li>
             <li><a href="{% url 'baohanh' %}">Bảo hành</a></li>
             <li><a href="{% url 'datlich' %}">Địa điểm bảo dưỡng</a></li>
-            <li><a href="#">Đặt lịch dịch vụ</a></li>
-            <li><a href="#">Chăm sóc khách hàng</a></li>
+            <li><a href="{% url 'datlich' %}">Đặt lịch dịch vụ</a></li>
+            <li><a href="">Hỏi & Đáp</a></li>
+            <li><a href="{% url 'cskh' %}">Chăm sóc khách hàng</a></li>
           </ul>
         </li>
         <li class="has-submenu">
@@ -442,9 +424,9 @@ footer p a:hover {
       <div class="footer-service">
         <h4>Dịch vụ</h4>
         <ul>
-          <li><a href="#">Bảo dưỡng định kỳ</a></li>
-          <li><a href="#">Bảo hành</a></li>
-          <li><a href="#">Địa điểm bảo dưỡng</a></li>
+          <li><a href="{% url 'baoduong' %}">Bảo dưỡng định kỳ</a></li>
+          <li><a href="{% url 'baohanh' %}">Bảo hành</a></li>
+          <li><a href="{% url 'showroom' %}">Địa điểm bảo dưỡng</a></li>
           <li><a href="{% url 'datlich' %}">Đặt lịch dịch vụ</a></li>
         </ul>
       </div>    
@@ -454,7 +436,6 @@ footer p a:hover {
         <ul>
           <li><a href="{% url 'gioi_thieu' %}">Giới thiệu về công ty</a></li>
           <li><a href="#">Hoạt động & sự kiện</a></li>
-          <li><a href="{% url 'tuyen_dung' %}">Thông tin tuyển dụng</a></li>
           <li><a href="{% url 'lien_he' %}">Liên hệ</a></li>
         </ul>
       </div>
@@ -482,19 +463,6 @@ footer p a:hover {
         </p>        
     </div>
   </footer> 
-  <script>
-    let slideIndex = 0;
-    showSlides();
-    function showSlides() {
-      let slides = document.getElementsByClassName("slide");
-      for (let i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-      }
-      slideIndex++;
-      if (slideIndex > slides.length) { slideIndex = 1 }
-      slides[slideIndex - 1].style.display = "block";
-      setTimeout(showSlides, 3000); // Chuyển ảnh sau mỗi 3 giây
-    }
-  </script>  
+  
 </body>
 </html>

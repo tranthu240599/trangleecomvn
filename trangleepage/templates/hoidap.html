@@ -1,0 +1,576 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<title>Hỏi & Đáp</title>
+  <style>
+    /* Thiết lập cơ bản cho toàn bộ trang */
+/* Phần đầu trang */
+header {
+    background-color: white;
+    color: black;
+    padding: 5px 0;
+}
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+.header-left,
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.header-left img,
+.header-right img {
+    height: 100px;
+    width: auto;
+    border-radius: 0px;
+}
+.header-center {
+    text-align: left;
+    font-family:'Times New Roman', Times, serif;
+    font-size: 18px;
+}
+@media (max-width: 768px) {
+.header-container {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+}
+.header-left,
+.header-right {
+    justify-content: center;
+}
+}
+/* Thanh điều hướng (menu) */
+nav {
+    background-color: #3a80b9; /* Nền xanh sáng hơn */
+    display: flex; /* Hiển thị các mục theo hàng ngang */
+    justify-content: center; /* Căn giữa các mục */
+    gap: 20px; /* Khoảng cách giữa các mục là 20px */
+    padding: 2.5px 0; /* Khoảng cách trên và dưới là 10px */
+}
+nav a:hover { /* Hiệu ứng khi rê chuột vào liên kết */
+    color: #ffcc00;
+}
+.nav-menu {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+}
+.nav-menu li {
+  position: relative;
+}
+.nav-menu a {
+  color: white;
+  text-decoration: none;
+  padding: 0px 20px;
+  display: block;
+  font-weight: 100;
+}
+.nav-menu a:hover {
+  background-color: #003366;
+  border-radius: 4px;
+}
+.submenu {    /* Submenu mặc định ẩn */
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #005599;
+  list-style: none;
+  padding: 0px 0;
+  margin: 0;
+  min-width: 180px;
+  z-index: 1000;
+}
+/* Hiện submenu khi hover vào mục cha */
+.has-submenu:hover .submenu {
+  display: block;
+}
+.submenu li a {
+  padding: 2px 10px;
+  font-weight: normal;
+  color: white;
+  font-size: 15px;
+}
+.submenu li a:hover {
+  background-color: #003366;
+}
+.search-form {  /* Ô tìm kiếm */
+  display: flex;
+  gap: 6px;
+}
+.search-form input {
+  padding: 0px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+}
+.search-form button {
+  padding: 0px 10px;
+  background-color: #003366;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.search-form button:hover {
+  background-color: #426f9c;
+}
+.footer-container {
+    display: flex;                  /* Kích hoạt Flexbox */
+    justify-content: space-between;/* Căn đều các cột */
+    flex-wrap: wrap;                /* Cho phép xuống dòng nếu màn hình nhỏ */
+    max-width: 1200px;
+    margin: auto;
+    padding: 0px;
+    gap: 20px;
+  }
+.footer-left,
+.footer-support,
+.footer-service,
+.footer-right {
+  flex: 1;            /* Mỗi cột chiếm đều không gian */
+  min-width: 200px;   /* Đảm bảo không bị quá nhỏ */
+}
+footer h4 {
+    margin-bottom: 5px;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: left;
+  }
+footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  } 
+footer ul li {
+    margin-bottom: 2px; /* Khoảng cách trên và dưới */
+    text-align: left;
+  } 
+footer ul li a {
+    color: black;
+    text-decoration: none;
+  } 
+footer ul li a:hover {
+    transform: scale(1.1); /* Phóng to 10% */
+    transition: transform 0.3s ease; /* Hiệu ứng mượt mà */
+    display: inline-block; /* Giúp transform hoạt động chính xác */
+  }  
+footer {   /* Phần chân trang */
+    background-color: white;
+    color: black;
+    font-size: 12px;
+    text-align: center; /* Căn giữa nội dung */
+    margin: 0;            /* Xóa khoảng cách bên ngoài */
+    width: 100vw;         /* Tràn toàn bộ chiều ngang */
+  }   
+.footer-left,
+.footer-support,
+.footer-service,
+.footer-right {
+    margin-bottom: 0px;
+  }
+.footer-bottom {
+    text-align: center;
+    margin-top: 0px;
+  } 
+.social-links a {   /* Liên kết mạng xã hội trong footer */
+    margin: 0 10px;     
+    color: black;       
+    text-decoration: none;  /* Bỏ gạch chân */
+    font-size: 16px;
+  }
+  /* Hiệu ứng hover cho liên kết mạng xã hội */
+.social-links a:hover {
+    text-decoration: underline;   /* Hiện gạch chân khi hover */
+  }
+footer p {
+  font-size: 14px;
+  background-color: #cdd9e4;
+  color: black;
+  text-align: center;
+  margin-top: 0px;
+}
+footer p a {
+  color: #081503;
+  text-decoration: none;
+  font-weight: bold;
+}
+footer p a:hover {
+  text-decoration: underline;
+}
+.divider {
+  margin: 10px 20px;
+  color: #2b4822;
+}
+/***** HỎI ĐÁP *****/
+/* Phần banner chứa ảnh đầu trang */
+.banner {
+  width: 100%;              /* Chiếm toàn bộ chiều ngang màn hình */
+  overflow: hidden;         /* Ẩn phần nội dung vượt ra ngoài khung */
+}
+.banner img {
+  width: 100%;              /* Ảnh phủ toàn bộ chiều ngang */
+  height: 300px;            /* Chiều cao cố định là 300px */
+  display: block;           /* Loại bỏ khoảng trắng dưới ảnh */
+  object-fit: contain;        /* Cắt ảnh để vừa khung, không méo hình */
+}
+.cau-hoi {
+  cursor: pointer;
+  margin-top: 5px;
+  background: #f0eeee;
+  font-weight: bold;
+}
+.cau-tra-loi {
+  display: none;
+  padding: 5px;
+  background: #fafafa;
+  border-left: 3px solid #007bff;
+  margin-bottom: 0px;
+}
+.luu-y {
+  margin-top: 8px; /* 👈 tạo khoảng cách với danh sách phía trên */
+  padding: 5px 8px;
+  background-color: #fffbe6;
+  border-left: 4px solid #f0c000;
+  border-radius: 6px;
+  font-style: italic;
+}
+.luu-y h3 {
+  margin: 0 0 6px 0;
+  color: #eb1409;
+  font-size: 18px;
+}
+.luu-y p {
+  margin: 3px;
+  font-size: 15px;
+  color: black;
+}
+@keyframes fade {
+    from {opacity: 0.4} /* Bắt đầu mờ */
+    to {opacity: 1}     /* Kết thúc rõ nét */
+}
+  /* Responsive cho thiết bị nhỏ hơn 768px */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column; /* Menu xếp dọc thay vì ngang */
+    align-items: center;    /* Căn giữa các mục */
+    }
+  .search-form {
+    margin-top: 10px;
+  }
+  .footer-container {
+    flex-direction: row; /* Giữ ngang */
+    overflow-x: auto;   
+  }
+}
+  </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+          <div class="header-left">
+            <img src="{% static 'images/logo-trangle1.png' %}" alt="TrangLee Logo">
+          </div>
+          <div class="header-center">
+            <h3 style="margin: 0px 0; font-weight: 900;">CÔNG TY TNHH TRANG LÊ</h3> 
+            <h4 style="margin: 0px 0; font-weight: 100;">Nhà phân phối chính thức Piaggio Việt Nam</h4>           
+          </div>
+          <div class="header-right">
+            <img src="{% static 'images/Piaggio.png' %}" alt="Piaggio Logo">
+            <img src="{% static 'images/vespa.png' %}" alt="Vespa Logo">
+          </div>
+        </div>
+      </header>     
+  <nav>
+    <nav class="nav-bar">
+      <ul class="nav-menu">
+        <li><a href="{% url 'home' %}">Trang chủ</a></li>    
+        <li class="has-submenu">
+          <a href="{% url 'gioi_thieu' %}">Giới thiệu</a>
+          <ul class="submenu">
+            <li><a href="{% url 'gioi_thieu' %}">Giới thiệu về công ty</a></li>
+            <li><a href="{% url 'lien_he' %}">Liên hệ</a></li>
+          </ul>
+        </li>   
+        <li class="has-submenu">
+          <a href="#">Sản phẩm</a>
+          <ul class="submenu">
+            <li><a href="#">Piaggio</a></li>
+            <li><a href="#">Vespa</a></li>
+          </ul>
+        </li>
+        <li class="has-submenu">
+          <a href="{% url 'showroom' %}">Showroom</a>
+          <ul class="submenu">
+            <li><a href="{% url 'showroom' %}">Đà Nẵng</a></li>
+            <li><a href="{% url 'showroom_qn' %}">Quảng Nam</a></li>
+          </ul>
+        </li>
+        <li class="has-submenu">
+          <a href="{% url 'dichvu' %}">Dịch vụ</a>
+          <ul class="submenu">
+            <li><a href="{% url 'baoduong' %}">Bảo dưỡng định kỳ</a></li>
+            <li><a href="{% url 'baohanh' %}">Bảo hành</a></li>
+            <li><a href="{% url 'showroom' %}">Địa điểm bảo dưỡng</a></li>
+            <li><a href="{% url 'datlich' %}">Đặt lịch dịch vụ</a></li>
+            <li><a href="">Hỏi & Đáp</a></li>
+            <li><a href="{% url 'cskh' %}">Chăm sóc khách hàng</a></li>
+          </ul>
+        </li>
+        <li class="has-submenu">
+          <a href="#">Tin tức</a>
+          <ul class="submenu">
+            <li><a href="#">Khuyến mãi</a></li>
+            <li><a href="#">Hoạt động & sự kiện</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>    
+    <!-- Ô tìm kiếm -->
+    <form class="search-form" action="/tim-kiem" method="GET">
+      <input type="text" name="q" placeholder="Tìm kiếm..." />
+      <button type="submit">🔍</button>
+    </form>
+  </nav>
+  <div class="banner">
+    <img src="{% static 'images/hoidap2.png' %}" alt="Hỏi & Đáp">
+  </div>
+  <main>
+      <div style="display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap;">
+        <!-- BÊN TRÁI: FORM GỬI CÂU HỎI -->
+        <div style="width: 320px; padding: 20px; border: 1px solid #ccc; border-radius: 8px; background-color: #f9f9f9;">
+          <h2 style="margin-top: 0;">📬📝 Gửi câu hỏi của bạn</h2>
+          <form method="POST" action="/gui-yeu-cau/">
+            {% csrf_token %}
+            <input type="text" name="email" placeholder="Email của bạn" required
+                  style="width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px;">
+            <textarea name="noi_dung" placeholder="Nội dung câu hỏi" rows="5" required
+                      style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;"></textarea>
+            <button type="submit"
+                    style="margin-top: 10px; padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 4px;">
+              Gửi câu hỏi
+            </button>
+          </form>
+        </div>
+        <!-- BÊN PHẢI: CÂU HỎI THƯỜNG GẶP -->
+        <div style="flex: 1; min-width: 320px;">
+          <h2>❓ Câu hỏi thường gặp</h2>
+          <div class="cau-hoi" onclick="toggleTraLoi('1')">
+            Xăng dùng cho xe Piaggio là loại nào?
+          </div>
+          <div id="traloi1" class="cau-tra-loi">
+            <p>Các xe Piaggio hiện nay đang bán tại thị trường Việt Nam đựơc sử dụng loại động cơ thế hệ mới của Piaggio (iGet - Italian Green Experience Technology) - động cơ thải ít khí xả ra môi trường với bộ chuyển đổi chất xúc tác thứ cấp. 
+              Đạt tiêu chuẩn Euro2 về khí xả. Động cơ xe với tỷ số nén lớn từ 10:1 đến 11.5:1 do vậy yêu cầu sử dụng xăng là loại không chì có chỉ số ốc tan tối thiểu là 92 (RON92), tốt nhất là RON 95</p>
+            <p>Nếu sử dụng loại xăng có trị số ốc tan thấp hơn (như RON90) thì cháy không hết, hiệu xuất thấp và dễ sẩy ra cháy kích nổ làm hư hỏng động cơ. Do vậy người sử dụng cẩn dùng đúng chủng loại xăng mà nhà sản xuất khuyến cáo.</p>
+            </div>
+          <div class="cau-hoi" onclick="toggleTraLoi('2')">
+            Bao lâu nên bảo dưỡng xe một lần?
+          </div>
+          <div id="traloi2" class="cau-tra-loi">
+            <p>Vặn tay ga vài 2-4 lần rồi ấn công tắc đề và chỉ đề tối đa 4 lần nếu vẫn chưa nổ máy. Lý do vặn tay ga vì trong chế hoà khí của xe Piaggio trang bị bơm tăng tốc.
+               Mỗi khi vặn tay ga, xăng sẽ bơm trực tiếp vào chế hoà khí để tăng lượng xăng để hỗ trợ quá trình khởi động.</p>
+            <p>Người sử dụng cũng chú ý khi xe tắt máy không nên để trẻ em vặn tay ga khi.
+               Việc này làm cho xăng tự bơm vào chế làm ướt bury, tốn xăng và xe rất khó khởi động.</p>
+          </div>
+          <div class="cau-hoi" onclick="toggleTraLoi('3')">
+            Dầu máy (cho động cơ ) sử dụng là loại gì? Vì sao giá lại đắt thế?
+          </div>
+          <div id="traloi3" class="cau-tra-loi">
+            <p>Dầu máy có tác dụng bôi trơn các bề mặt chuyển động để giảm ma sát, làm kín các bề mặt chi tiết chuyển động,
+               làm sạch các chất bẩn trong động cơ và làm mát một phần các chi tiết trong động cơ.</p>
+            <p>Với những tác dụng như trên nên cần thiết phải có dầu bôi trơn cho đông cơ trong quá trình hoạt động. 
+              Tuỳ thuộc vào từng loại động cơ và tính năng kỹ thuật của xe mà nhà sản xuất yêu cầu sử dụng loại dầu thích hợp.</p>
+            <p>Với xe Piaggio sử dụng loại động cơ giảm ít khí xả ra môi trường. Tỷ số nén trong động cơ rất cao từ 10,1:1-11.1:1 với xe 
+              làm mát bằng không khí và 11.5:1-12.5:1 với loại làm mát bằng nước. Tốc độ vòng quay lớn nhất lên đến 10,000 vòng/phút. 
+              Đồng thời sử dụng ổ đỡ trục cơ bằng bạc chứ không phải bằng vòng bi. Do vậy cần dầu bôi trơn tiêu chuẩn rất cao.</p>
+            <p>Piaggio khuyến cáo khách hàng sử dụng loại dầu bôi trơn như sau: 
+              Gốc tổng hợp (Fully-synthetic), độ nhớt SAE: 5W-40, phẩm cấp API:SJ.
+              Với dầu gốc tổng hợp đáp ứng được yêu cầu làm việc khắc nghiệt khi động cơ hoạt động ở tốc độ, nhiệt độ, áp suất cao do 
+              vậy giá thành của sản phẩm khá cao. Đó chính là nguyên nhân giá thành khác biệt của loại dầu gốc tổng hợp và dầu gốc khoáng bình thường.</p>
+          </div>
+          <div class="cau-hoi" onclick="toggleTraLoi('4')">
+            Dầu hộp giảm tốc là loại gì? Có cần phải thay không?
+          </div>
+          <div id="traloi4" class="cau-tra-loi">
+            <p>Dầu sử dụng cho hộp giảm tốc cho xe Piaggio được khuyến cáo sử dụng là loại dầu hộp số, độ nhớt SAE: 80W/90, phẩm cấp API: GL3.
+               Dầu hộp giảm tốc này cần phải được thay thế sau mỗi 3,000 km. Việc thay thế cần được thực hiện bởi trung tâm bảo hành Piaggio.</p>
+          </div>
+          <div class="cau-hoi" onclick="toggleTraLoi('5')">
+            Lốp xe sử dụng là loại gì? Có phải bơm không?
+          </div>
+          <div id="traloi5" class="cau-tra-loi">
+            <p>Tất cả các xe scooter Piaggio đều sử dụng lốp không săm. Đây là loại lốp rất an toàn và thuận lợi trong quá trình sử dụng. 
+              Khi bị vật nhọn đâm vào, lốp xe sẽ xuống hơi từ từ nên an toàn chứ không nổ như xe có săm.</p>
+            <p>Trong quá trình sử dụng, đương nhiên áp suất lốp xe sẽ dò rỉ đi và cần phải bơm lại. Trong khoảng 10 ngày quý khách nên 
+                kiểm tra áp suất lốp và bơm vào nếu thấy non. Áp suất của các loại lốp cho xe Piaggio, lốp trước: 1.8-2kg/cm2, lốp sau: 2.2-2.5kg.cm2.</p>
+            <p>Để thuận lợi cho sử dụng, quý khách nên tự trang bị bộ vá xe nhanh sẵn trong cốp. 
+              Nếu bị thủng lốp qúy khách có thể tự vá lốp, điều này càng có ý nghĩa mỗi khi đi xa.</p>
+          </div>
+          <div class="cau-hoi" onclick="toggleTraLoi('6')">
+            Bình ắt quy sử dụng là loại gì? Cách sử dụng và bảo quản?
+          </div>
+          <div id="traloi6" class="cau-tra-loi">
+            <p>Xe Piaggio thường trang bị loại bình ắc quy nước. Dung tích bình ắc quy là loại bình 12V-9Ah. Do vậy nước sẽ bay hơi trong quá trình sử dụng. 
+              Vì vậy cần thường xuyên kiểm tra điện áp và lượng nước trong bình mỗi khi thay dầu máy sao cho luôn nằm trong vạch giới hạn Min-Max.</p>
+            <p>Bình ắc quy sẽ tự phóng điện nếu xe không sử dụng trong một thời gian dài. Đó là hiện tượng tự nhiên của sự phóng điện. 
+              Do vậy khi không sử dụng xe trong khoảng 20 ngày trở lên cần phải nạp lại ắc quy trước khi sử dụng.</p>
+            <p>Những mẫu xe Piaggio hiện đang bán tại thị trường Việt Nam hiện nay đều trang bị loại đèn pha công suất lớn 55W-60W và luôn sáng mỗi khi bật khoá điện. 
+              Do vậy quý khách hàng bật khoá điện mà không nổ máy ngay thì điện sẽ tiêu thụ cho bóng đèn làm tụt điện áp bình, gây khó khăn cho quá trình khởi động.</p>
+          </div>
+          <div class="cau-hoi" onclick="toggleTraLoi('7')">
+            Khi xe bị chết máy do ngập nước thì phải làm những gì?
+          </div>
+          <div id="traloi7" class="cau-tra-loi">
+            <p>Trong quá trình sử dụng ở Việt Nam, đặc biệt tại Hà Nội và Hồ Chí Minh, luôn ngập úng mỗi khi trời mưa. Do vậy mỗi quý khách nên có hiểu biết khi đi xe trên đường ngập nước và bị chết máy.</p>
+            <p>Khi đi đường ngập nước, luôn vặn tay ga lớn hơn bình thường và sử dụng phanh nhưng vẫn giữ tay ga khi đi qua chỗ lội.</p>
+            <p>Nếu ngập sâu quá xe sẽ chết máy do nước vào làm ướt bury. Sau đó nếu nổ máy được hay không thì qúy khách cũng nên liên hệ và đem xe đến trung tâm bảo hành 
+              Piaggio sớm để kiểm tra và thay dầu máy, hộp số nếu cần. Nếu xe ngập nước mà để quá lâu, nước sẽ làm mất tác dụng của dầu bôi trơn gây rỉ sét các chi tiết trong động cơ và làm hỏng máy.</p>
+          </div>
+          <div class="cau-hoi" onclick="toggleTraLoi('8')">
+            Rửa xe như thế nào cho đúng?
+          </div>
+          <div id="traloi8" class="cau-tra-loi">
+            <p>Rửa sạch xe bằng nước áp lực thấp, sử dụng tấm mút nhúng trong dung dịch pha xà phòng loãng từ 2-4%. Sau đó rửa sạch bằng nước dưới áp suất thấp. 
+              Rồi lau khô bằng rẻ sạch và khí nén. Với phần động cơ bẩn, làm sạch bằng xăng, bàn chải và rẻ sạch.</p>
+            <p>Không nên rửa xe dưới nắng to, thân xe sẽ nóng lên làm cho chất tẩy, xà phòng bám chặt vào trước khi rửa sạch sẽ làm hỏng bề mặt sơn. 
+              Không bao giừ dùng rẻ thấm xăng hay dầu diezen để làm sạch bề mặt chi tiết sơn.</p>
+            <p>Trong khi rửa xe, không dùng nước áp lực cao xịt vào. Chỉ sử dụng đầu xịt hình rẻ quạt và luôn để cách xe ít nhất 60cm.
+              Không sử dụng nước nóng quá 40 độ C. Không xịt nước trực tiếp vào chế hoà khí, hệ thống điện, vào hệ thống côn truyền động.</p>
+          </div>
+          <div class="cau-hoi" onclick="toggleTraLoi('9')">
+            Việc lắp thêm các thiết bị không chính thống có ảnh hưởng không?
+          </div>
+          <div id="traloi9" class="cau-tra-loi">
+            <p>Trên xe ga, nhà sản xuất khi thiết kế từ hệ thống điện, hệ thống nhiên liệu và động cơ đã tính toán tỉ mỉ công suất cho từng thiết bị, 
+              tiết diện của từng dây dẫn, đường đi lại của từng dây điện và ống dẫn nhiên liệu, dẫn chất lỏng. Việc lắp thêm bất cứ một thiết bị phụ trợ nào ngoài thiết kế lên xe đều có khả năng gây nguy hiểm.</p>
+            <p>Trên thị trường hiện nay đang thịnh hành các loại bóng đèn siêu sáng và bóng bi-xenon, các loại bóng này vốn không được thiết kế nguyên bản trên xe. Khi lắp các loại bóng đèn này người ta 
+              còn phải lắp thêm một ba-lát điện tử như chiếc chấn lưu của đèn tuýp. Thiết bị này sẽ ảnh hưởng trực tiếp đến hệ thống chống trộm của xe, làm thiết bị nhận diện mã code sẽ bị lẫn lộn và làm
+               máy không nổ khi ba-lát để sát ổ chìa khoá. Ngoài ra vì công suất bóng đèn không tương thích với công suất thiết kế nguyên bản nên dễ gây quá tải và chập dây điện.</p>
+            <p>Việc lắp còi chíp cho đèn xi-nhan cũng có thể gây chập điện nếu công tắc tiếp điểm của rơ-le không tốt.</p>
+            <p>Việc lắp thêm các thiết bị được quảng cáo là tiết kiệm nhiên liệu cũng là một hiểm hoạ tiềm tàng vì làm sai lệch qui trình vận động và công suất của động cơ.</p>
+            </div>
+          <div class="cau-hoi" onclick="toggleTraLoi('10')">
+            Dán ni lông bọc vào xe có gây hư hỏng không?
+          </div>
+          <div id="traloi10" class="cau-tra-loi">
+            <p>Piaggio khuyến cáo khách hàng không dán ni lông vào thân xe, đó có thể là nguyên nhân gây nên hiện tượng rộp sơn hoặc đổi màu sơn của xe.
+               Lý do có thể hóa chất trong ni lông sẽ tác động đến sơn làm biến màu hoặc rộp trong quá trình sử dụng.</p>
+          </div>
+          <div class="cau-hoi" onclick="toggleTraLoi('11')">
+            Trùm áo mưa vào đèn pha xe khi đi trời mưa có ảnh hưởng gì?
+          </div>
+          <div id="traloi11" class="cau-tra-loi">
+            <p>Đèn pha trang bị trên các loại xe Piaggio thường có công suất lớn (55/60W) (như ET8-125/150, GTS125/250, LX125/150,..), vì vậy nhiệt độ ở đèn pha cao nhất 
+              là khi dừng xe tại chỗ. Do vậy nếu khách hàng sử dụng chùm áo mưa lên đèn nhiệt lượng không tỏa ra được sẽ gây ra hiện tượng quá nóng trên chóa và và chảy nhựa.</p>
+          </div>
+          <div class="cau-hoi" onclick="toggleTraLoi('12')">
+            Có nên mua bảo hiểm vật chất thân xe của bạn?
+          </div>
+          <div id="traloi12" class="cau-tra-loi">
+            <p>Cũng như một chiếc ôtô, chiếc xe ga của bạn có giá trị cao nên bạn cần mua bảo hiểm vật chất thân xe để được bảo hiểm bồi thường khi xảy ra rủi ro. Hiện nay đa số 
+              quý khách chủ xe máy chỉ có thói quen mua bảo hiểm trách nhiệm dân sự đối với ngưòi thứ ba hơn là mua thêm cả bảo hiểm vật chất thân xe.</p>
+          </div>
+          <div class="cau-hoi" onclick="toggleTraLoi('13')">
+            Tôi có xe máy Piaggio Sfera 50 đời 94, khi ga lên xe chạy tốt nhưng chỉ được vài chục mét là lịm ga thậm chí bị tắt máy. 
+            Sau đó khởi động lại máy nổ nhưng không ga lên được mà chỉ nổ ở mức garanti. Xin các anh chị cho biết bệnh gì và cách xử lý như thế nào?
+          </div>
+          <div id="traloi13" class="cau-tra-loi">
+            <p>Xe của chị là loại xe 2 kỳ 50 cc. Chị có thường hay đi bảo dưỡng tại các trung tâm bảo hành của Piaggio không? Theo như miêu tả của chị chúng tôi phán đoán xe của chị bị nghẹt ống bô. 
+              Nguyên nhân chính là xe 2 kỳ được pha trực tiếp dầu nhờn vào xăng và được cháy trực tiếp trong quá trình cháy. Do vậy muội than sẽ đọng trong ống bô làm nghẹt ống bô.</p>
+            <p>Việc này được xử lý dễ dàng nhờ thông ống bô và phải được làm thường xuyên, đặc biệt là các xe cũ. Chị hãy liên hệ với các trung tâm bảo hành Piaggio để được trợ giúp.</p>
+          </div>
+          <div class="luu-y">
+            <h3>✔️ Lưu ý:</h3>
+            <p>Trong mọi trường hợp xin Quý khách vui lòng liên hệ với các điểm dịch vụ gần nhất trong hệ thống Piaggio Trang Lee.</p>
+            <p>Chúc Quý khách luôn gặp được niềm vui khi sử dụng các sản phẩm của Piaggio Trang Lee.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  <footer>
+    <div class="footer-container">
+      <!-- Trái -->
+      <div class="footer-left">
+        <h4>Sản phẩm</h4>
+        <ul>
+          <li><a href="#">Piaggio Liberty</a></li>
+          <li><a href="#">Piaggio Medley</a></li>
+          <li><a href="#">Vespa Primavera</a></li>
+          <li><a href="#">Vespa Sprint</a></li>
+        </ul>
+      </div>  
+      <!-- Hỗ trợ -->
+      <div class="footer-support">
+        <h4>Hỗ trợ</h4>
+        <ul>
+          <li><a href="#">Mua xe trả góp</a></li>
+          <li><a href="#">Thông tin thanh toán</a></li>
+          <li><a href="#">Thông tin khuyến mãi</a></li>
+          <li><a href="#">Chăm sóc khách hàng</a></li>
+          <li><a href="#">Chính sách bảo mật</a></li>
+        </ul>
+      </div>    
+      <!-- Dịch vụ -->
+      <div class="footer-service">
+        <h4>Dịch vụ</h4>
+        <ul>
+          <li><a href="#">Bảo dưỡng định kỳ</a></li>
+          <li><a href="#">Bảo hành</a></li>
+          <li><a href="#">Địa điểm bảo dưỡng</a></li>
+          <li><a href="#">Đặt lịch dịch vụ</a></li>
+        </ul>
+      </div>    
+      <!-- Giới thiệu -->
+      <div class="footer-right">
+        <h4>Giới thiệu</h4>
+        <ul>
+          <li><a href="{% url 'gioi_thieu' %}">Giới thiệu về công ty</a></li>
+          <li><a href="#">Hoạt động & sự kiện</a></li>
+          <li><a href="{% url 'lien_he' %}">Liên hệ</a></li>
+        </ul>
+      </div>
+    </div>    
+    <div class="footer-bottom">
+      <div class="social-links">
+        <a href="https://www.facebook.com/VespaTrangLee" class="facebook">
+          <i class="fab fa-facebook-f"></i> Facebook </a>
+        <a href="#" class="youtube">
+          <i class="fab fa-youtube"></i> YouTube </a>
+        <a href="#" class="zalo">
+          <i class="fas fa-comment-dots"></i> Zalo </a>                
+        <a href="tel:1800255898" style="font-size: 20px; color: red; font-weight: bold;">
+          📞 Hotline: 1800 255 898
+        </a>   
+      </div>
+      <p>
+        <p>
+          &copy; 2025 TrangLee. 
+          Email: <a href="mailto:contact@tienthu.vn">contact@tienthu.vn</a>  
+          <span class="divider">|</span> 
+          <a href="http://www.vespa.com.vn/">Vespa Việt Nam</a> 
+          <span class="divider">|</span> 
+          <a href="http://www.piaggio.com.vn/">Piaggio Việt Nam</a>
+        </p>        
+    </div>
+  </footer> 
+  <script>
+    function toggleTraLoi(id) {
+      var div = document.getElementById('traloi' + id);
+      div.style.display = (div.style.display === 'none' || div.style.display === '') ? 'block' : 'none';
+    }
+  </script>  
+</body>
+</html>

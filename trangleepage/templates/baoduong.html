@@ -128,25 +128,6 @@ nav a:hover { /* Hiệu ứng khi rê chuột vào liên kết */
 .search-form button:hover {
   background-color: #426f9c;
 }
-/* Khung chứa slideshow */
-.slideshow-container {
-    position: relative; /* Cho phép định vị các phần tử con */
-    width: 100%; /* Chiếm toàn bộ chiều ngang màn hình */
-    overflow: hidden; /* Ẩn phần vượt ra ngoài khung */
-}
-/* Mỗi slide ảnh */
-.slide {
-    display: none; /* Ẩn tất cả slide, chỉ hiển thị 1 cái tại 1 thời điểm */
-    width: 100%; /* Chiếm toàn bộ chiều ngang */
-    animation: fade 1s ease-in-out; /* Hiệu ứng mờ dần khi chuyển ảnh */
-}
-/* Ảnh trong slide */
-.slide img {
-    width: 100%; /* Chiếm toàn bộ chiều ngang */
-    height: auto;/*700px;         /* Chiều cao mong muốn */
-    object-fit: cover; /*contain;   /* Giữ nguyên ảnh *//* Ảnh lấp đầy khung, có thể bị cắt mép*/ 
-    display: block; /* Loại bỏ khoảng trắng dưới ảnh */
-}
 .footer-container {
     display: flex;                  /* Kích hoạt Flexbox */
     justify-content: space-between;/* Căn đều các cột */
@@ -236,13 +217,22 @@ footer p a:hover {
 }
 /*----------DỊCH VỤ-------*/
 /*----------BẢO DƯỠNG ĐỊNH KỲ-------*/
+.banner {
+  width: 100%;              /* Chiếm toàn bộ chiều ngang màn hình */
+  overflow: hidden;         /* Ẩn phần nội dung vượt ra ngoài khung */
+}
+.banner img {
+  width: 100%;              /* Ảnh phủ toàn bộ chiều ngang */
+  height: 200px;            /* Chiều cao cố định là 300px */
+  display: block;           /* Loại bỏ khoảng trắng dưới ảnh */
+  object-fit: contain;        /* Cắt ảnh để vừa khung, không méo hình */
+}
 .page-title {
   text-align: center;
   font-size: 28px;
   color: #145a9f;
   margin-bottom: 30px;
 }
-
 .bao-duong-list {
   list-style: none;
   padding-left: 0;
@@ -250,25 +240,14 @@ footer p a:hover {
   line-height: 1.8;
   color: #333;
 }
-
-.bao-duong-hinh img {
-  width: 100%;
-  max-width: 600px;
-  display: block;
-  margin: 30px auto;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
-
 .btn-dat-lich {
-  display: inline-block;
   background-color: #145a9f;
-  color: #fff;
-  padding: 12px 24px;
+  color: rgb(235, 229, 229);
+  padding: 10px 20px;
   border-radius: 8px;
   text-decoration: none;
   font-weight: bold;
-  margin-top: 20px;
+  margin-top: 5px;
 }
 
 /* Hiệu ứng mờ dần khi chuyển ảnh */
@@ -288,19 +267,6 @@ footer p a:hover {
   .footer-container {
     flex-direction: row; /* Giữ ngang */
     overflow-x: auto;   
-  }
-  .chon-muc {
-    flex-direction: column;
-    align-items: center;
-  }
-  .chon-muc a {
-    width: 90%;
-    margin-bottom: 15px;
-    text-align: center;
-    font-size: 18px;
-  }
-  .bai-viet-2cot {
-    flex-direction: column;
   }
 }
   </style>
@@ -350,10 +316,11 @@ footer p a:hover {
           <a href="{% url 'dichvu' %}">Dịch vụ</a>
           <ul class="submenu">
             <li><a href="{% url 'baoduong' %}">Bảo dưỡng định kỳ</a></li>
-            <li><a href="#">Bảo hành</a></li>
-            <li><a href="#">Địa điểm bảo dưỡng</a></li>
-            <li><a href="#">Đặt lịch dịch vụ</a></li>
-            <li><a href="#">Chăm sóc khách hàng</a></li>
+            <li><a href="{% url 'baohanh' %}">Bảo hành</a></li>
+            <li><a href="{% url 'showroom' %}">Địa điểm bảo dưỡng</a></li>
+            <li><a href="{% url 'datlich' %}">Đặt lịch dịch vụ</a></li>
+            <li><a href="">Hỏi & Đáp</a></li>
+            <li><a href="{% url 'cskh' %}">Chăm sóc khách hàng</a></li>
           </ul>
         </li>
         <li class="has-submenu">
@@ -372,7 +339,10 @@ footer p a:hover {
     </form>
   </nav>
   <main>
-    <h1 class="page-title">Dịch vụ Bảo Dưỡng Định Kỳ</h1>
+    <div class="banner">
+      <img src="{% static 'images/gioithieuxe.png' %}" alt="Ảnh giới thiệu công ty">
+    </div>
+    <h1 class="page-title">Bảo Dưỡng Định Kỳ</h1>
     <p>Giữ cho xe của bạn luôn vận hành ổn định, an toàn và bền bỉ với dịch vụ bảo dưỡng định kỳ tại Trang Lê.</p>
     <ul class="bao-duong-list">
         <li>🔧 Kiểm tra và thay dầu nhớt</li>
@@ -382,10 +352,7 @@ footer p a:hover {
         <li>🚦 Kiểm tra đèn, còi, xi nhan</li>
         <li>📋 Tư vấn lịch bảo dưỡng phù hợp theo số km</li>
     </ul>
-    <div class="bao-duong-hinh">
-        <img src="{% static 'images/bao-duong.jpg' %}" alt="Bảo dưỡng xe Piaggio">
-    </div>
-    <a href="#" class="btn-dat-lich">📅 Đặt lịch bảo dưỡng</a>
+    <a href="{% url 'datlich' %}" class="btn-dat-lich">📅 Đặt lịch bảo dưỡng</a>
   </main>        
   <footer>
     <div class="footer-container">
@@ -406,7 +373,7 @@ footer p a:hover {
           <li><a href="#">Mua xe trả góp</a></li>
           <li><a href="#">Thông tin thanh toán</a></li>
           <li><a href="#">Thông tin khuyến mãi</a></li>
-          <li><a href="#">Chăm sóc khách hàng</a></li>
+          <li><a href="{% url 'cskh' %}">Chăm sóc khách hàng</a></li>
           <li><a href="#">Chính sách bảo mật</a></li>
         </ul>
       </div>    
@@ -414,10 +381,10 @@ footer p a:hover {
       <div class="footer-service">
         <h4>Dịch vụ</h4>
         <ul>
-          <li><a href="#">Bảo dưỡng định kỳ</a></li>
-          <li><a href="#">Bảo hành</a></li>
-          <li><a href="#">Địa điểm bảo dưỡng</a></li>
-          <li><a href="#">Đặt lịch dịch vụ</a></li>
+          <li><a href="{% url 'baoduong' %}">Bảo dưỡng định kỳ</a></li>
+          <li><a href="{% url 'baohanh' %}">Bảo hành</a></li>
+          <li><a href="{% url 'showroom' %}">Địa điểm bảo dưỡng</a></li>
+          <li><a href="{% url 'datlich' %}">Đặt lịch dịch vụ</a></li>
         </ul>
       </div>    
       <!-- Giới thiệu -->
@@ -452,20 +419,6 @@ footer p a:hover {
           <a href="http://www.piaggio.com.vn/">Piaggio Việt Nam</a>
         </p>        
     </div>
-  </footer> 
-  <script>
-    let slideIndex = 0;
-    showSlides();
-    function showSlides() {
-      let slides = document.getElementsByClassName("slide");
-      for (let i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-      }
-      slideIndex++;
-      if (slideIndex > slides.length) { slideIndex = 1 }
-      slides[slideIndex - 1].style.display = "block";
-      setTimeout(showSlides, 3000); // Chuyển ảnh sau mỗi 3 giây
-    }
-  </script>  
+  </footer>  
 </body>
 </html>
